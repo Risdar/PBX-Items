@@ -2,3 +2,4 @@
 
 // Spawners
 server int PBXItems_filter = 0;
+server int PBXItems_HelpFlags = 0;

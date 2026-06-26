@@ -20,7 +20,11 @@ enum PBXItems_eItemSpawns
 
 	DisableRedSoul              = 1 << 16,
 	DisableDarkMega             = 1 << 17,
-	DisableAdrenaline           = 1 << 18
+	DisableAdrenaline           = 1 << 18,
+
+	DisableHaste                = 1 << 19,
+	DisableQuadDamage           = 1 << 20
+
 
 }
 
@@ -170,6 +174,18 @@ class PBItems_Injector : PBInjector	//your injector needs to inherit from PBInje
         {
             handler.InjectSpawn('PB_BerserkSpawnerT1', 'PBX_Adrenaline', 255, 1);
             handler.InjectSpawn('PB_BerserkSpawnerT2', 'PBX_Adrenaline', 255, 1);
+        }
+
+        if(!CheckFlag(DisableHaste))
+        {
+            handler.InjectSpawn('PB_BlurSpawnerT1', 'PB_Haste', 255, 1);
+            handler.InjectSpawn('PB_BlurSpawnerT2', 'PB_Haste', 255, 1);
+        }
+
+        if(!CheckFlag(DisableQuadDamage))
+        {
+            handler.InjectSpawn('PB_BlurSpawnerT3', 'PB_Doomsphere', 255, 1);
+            handler.InjectSpawn('PB_BlurSpawnerT4', 'PB_Doomsphere', 255, 1);
         }
 		
 	}

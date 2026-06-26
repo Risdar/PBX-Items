@@ -11,6 +11,7 @@ OptionMenu "PBXItesm_Menu"
 
     StaticText	"--------- General Settings ---------", 1
     SafeCommand "Enable All PBX Items  Spawners", "set PBXItems_filter 0"
+    SafeCommand "Reset Item Tool Tips", "set PBXItems_HelpFlags 0"
 
 
     /* Command "Reset PBX Armor Tips", "set PBXWeapons_WeaponHelpFlags 0; set PBXWeapons_UpgradeHelpFlags 0" */
@@ -118,6 +119,12 @@ AddOptionMenu "AddonPowerupSpawns" after "INVLT3"
 AddOptionMenu "AddonPowerupSpawns" after "INVST1"
 {
     FlagOption    "Black Blur","PBXItems_filter",    "OffOn", 5
+    FlagOption    "Haste","PBXItems_filter",    "OffOn", 19
+}
+
+AddOptionMenu "AddonPowerupSpawns" after "INVST3"
+{
+    FlagOption    "Quad Damage","PBXItems_filter",    "OffOn", 20
 }
 
 

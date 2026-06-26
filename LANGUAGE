@@ -26,5 +26,36 @@ TIMEFREEZE_PICKUP       = "ZA WARUDO";
 
 REDSOUL_PICKUP          = "Tainted Soulsphere";
 DARKMEGA_PICKUP         = "Tainted Megasphere";
-ADRENAL_PICKUP          = "Tainted Megasphere";
+ADRENAL_PICKUP          = "You Found an Adrenaline";
+
+//////////////////////////// POWERUPS TIPS ///////////////////////////////////////////////////////////////////////////////
+PBX_BlackBlur_Tip1 = "The Black Blur is a Tainted Invisibility sphere.";
+PBX_BlackBlur_Tip2 = "It will give stealth to every monster that comes near it.";
+
+PBX_Deflect_Tip1 = "The Deflect Sphere will change the direction of every projectile that comes near the player."
+
+PBX_ElectAura_Tip1 = "The Electric Aura Sphere will damage every enemy in a large area.";
+
+PBX_GoldInvul_Tip1 = "The Gold Invulnerability is Tainted Invulnerability sphere.";
+PBX_GoldInvul_Tip2 = "It will make every monster near it invulnerable.";
+
+PBX_Legend_Tip1 = "The Legend Sphere will make you not go below 1 HP.";
+
+PBX_Lifesteal_Tip1 = "The Lifesteal Orb will heal 50% of the damage you dealt.";
+
+PBX_Terror_Tip1 = "The Terror Sphere will make every monster run away from you.";
+
+PBX_Ammo_Tip1 = "The Ammo Sphere will give you infinite ammo.";
+
+PBX_Guard_Tip1 = "The Guard Sphere will give you 75% damage reduction."
+
+PBX_Regen_Tip1 = "The Regen Sphere will give you health regeneration.";
+
+PBX_RedSoul_Tip1 = "The Red Soul Sphere is a Tainted Soul Sphere.";
+PBX_RedSoul_Tip2 = "It will damage the player that get close to it and spawn lost souls for every corpse nearby.";
+
+PBX_DarkMega_Tip1 = "The Dark Mega Sphere is a Tainted Mega Sphere.";
+PBX_DarkMega_Tip2 = "It will heal every monster nearby.";
+
+PBX_Adrenaline_Tip1 = "The Adrenaline will give you Quad Damage and Haste.";
 
