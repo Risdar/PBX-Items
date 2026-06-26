@@ -1,0 +1,128 @@
+
+AddOptionMenu "PB_AddonOptions"
+{
+    Submenu "$PBXItems_Settings", "PBXItesm_Menu"
+}
+OptionMenu "PBXItesm_Menu"
+{
+    Title "$PBXItems_Settings"
+	Class "PB_OptionMenu"
+    Position	-48
+
+    StaticText	"--------- General Settings ---------", 1
+    SafeCommand "Enable All PBX Items  Spawners", "set PBXItems_filter 0"
+
+
+    /* Command "Reset PBX Armor Tips", "set PBXWeapons_WeaponHelpFlags 0; set PBXWeapons_UpgradeHelpFlags 0" */
+
+    
+    StaticText " "
+    StaticText "$PBXItems_Version",white
+}
+
+//////////////////////////// GREEN ARMOR SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+// Tier 3
+AddOptionMenu "AddonHealthArmorSpawns" after "GRENT3"
+{
+    FlagOption    "Mini Sphere","PBXItems_filter",    "OffOn", 4
+}
+
+//////////////////////////// BERSERK SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+// TIER 1
+AddOptionMenu "AddonPowerupSpawns" after "ZERKT1"
+{
+    FlagOption    "Lifesteal Orb","PBXItems_filter",    "OffOn", 10
+    FlagOption    "Adrenaline","PBXItems_filter",    "OffOn", 18
+}
+
+// TIER 2
+AddOptionMenu "AddonPowerupSpawns" after "ZERKT2"
+{
+    FlagOption    "Mega Berserk","PBXItems_filter",    "OffOn", 0
+}
+
+//////////////////////////// SOUL SPHERE SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+// TIER 1
+AddOptionMenu "AddonHealthArmorSpawns" after "SOULT1"
+{
+    FlagOption    "Deflect Sphere","PBXItems_filter",    "OffOn", 6
+    FlagOption    "Terror Sphere","PBXItems_filter",    "OffOn", 11
+    FlagOption    "Ammo Sphere","PBXItems_filter",    "OffOn", 12
+    FlagOption    "Guard Sphere","PBXItems_filter",    "OffOn", 13
+    FlagOption    "Regen Sphere","PBXItems_filter",    "OffOn", 14
+    FlagOption    "Red Soul Sphere","PBXItems_filter",    "OffOn", 16
+}
+
+// TIER 2
+AddOptionMenu "AddonHealthArmorSpawns" after "SOULT2"
+{
+    FlagOption    "Super Sphere","PBXItems_filter",    "OffOn", 1
+    FlagOption    "Electric Aura Sphere","PBXItems_filter",    "OffOn", 7
+
+}
+
+// TIER 3
+AddOptionMenu "AddonHealthArmorSpawns" after "SOULT3"
+{
+    FlagOption    "Ultra Sphere","PBXItems_filter",    "OffOn", 2
+}
+
+// TIER 4
+AddOptionMenu "AddonHealthArmorSpawns" after "SOULT4"
+{
+    FlagOption    "Time Sphere","PBXItems_filter",    "OffOn", 15
+}
+
+//////////////////////////// MEGA SPHERE SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+// TIER 1
+AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT1"
+{
+    FlagOption    "Dark Mega Sphere","PBXItems_filter",    "OffOn", 17
+}
+
+// TIER 2
+AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT2"
+{
+    FlagOption    "Hyper Sphere","PBXItems_filter",    "OffOn", 3
+    FlagOption    "Electric Aura Sphere","PBXItems_filter",    "OffOn", 7
+}
+
+// TIER 4
+AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT4"
+{
+    FlagOption    "Time Sphere","PBXItems_filter",    "OffOn", 15
+}
+
+
+//////////////////////////// INVUL SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+// TIER 1
+AddOptionMenu "AddonPowerupSpawns" after "INVLT1"
+{
+    FlagOption    "Gold Invulnerability","PBXItems_filter",    "OffOn", 8
+}
+
+// TIER 2
+AddOptionMenu "AddonPowerupSpawns" after "INVLT2"
+{
+    FlagOption    "Legend Sphere","PBXItems_filter",    "OffOn", 9
+}
+
+// TIER 4
+AddOptionMenu "AddonPowerupSpawns" after "INVLT3"
+{
+    FlagOption    "Time Sphere","PBXItems_filter",    "OffOn", 15
+}
+
+//////////////////////////// INVIS SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+// TIER 1
+AddOptionMenu "AddonPowerupSpawns" after "INVST1"
+{
+    FlagOption    "Black Blur","PBXItems_filter",    "OffOn", 5
+}
+
+
+//////////////////////////// MEDIKIT SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+AddOptionMenu "AddonHealthArmorSpawns" after "MEDIT3"
+{
+    FlagOption    "Regen Sphere","PBXItems_filter",    "OffOn", 14
+}

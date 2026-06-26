@@ -1,0 +1,318 @@
+
+Sprite "PSTRC0", 166, 99
+{
+	XScale 4.400
+	YScale 4.400
+	//Offset 95, 100
+	Offset 83,97
+	Patch "PSTRC0", 0, 0
+}
+
+Sprite "SPRSA0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS1", 0, 0
+}
+
+Sprite "SPRSB0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS2", 0, 0
+}
+
+Sprite "SPRSC0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS3", 0, 0
+}
+
+Sprite "SPRSD0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS4", 0, 0
+}
+
+Sprite "SPRSE0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS5", 0, 0
+}
+
+Sprite "SPRSF0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS6", 0, 0
+}
+
+Sprite "SPRSG0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS7", 0, 0
+}
+
+Sprite "SPRSH0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS8", 0, 0
+}
+
+Sprite "SPRSI0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS9", 0, 0
+}
+
+Sprite "SPRSJ0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "SPS10", 0, 0
+}
+Sprite "ULTSA0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS1", 0, 0
+}
+
+Sprite "ULTSB0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS2", 0, 0
+}
+
+Sprite "ULTSC0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS3", 0, 0
+}
+
+Sprite "ULTSD0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS4", 0, 0
+}
+
+Sprite "ULTSE0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS5", 0, 0
+}
+
+Sprite "ULTSF0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS6", 0, 0
+}
+
+Sprite "ULTSG0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS7", 0, 0
+}
+
+Sprite "ULTSH0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS8", 0, 0
+}
+
+Sprite "ULTSI0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS9", 0, 0
+}
+
+Sprite "ULTSJ0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "UTS10", 0, 0
+}
+
+Sprite "HYPSA0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS1", 0, 0
+}
+
+Sprite "HYPSB0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS2", 0, 0
+}
+
+Sprite "HYPSC0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS3", 0, 0
+}
+
+Sprite "HYPSD0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS4", 0, 0
+}
+
+Sprite "HYPSE0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS5", 0, 0
+}
+
+Sprite "HYPSF0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS6", 0, 0
+}
+
+Sprite "HYPSG0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS7", 0, 0
+}
+
+Sprite "HYPSH0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS8", 0, 0
+}
+
+Sprite "HYPSI0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS9", 0, 0
+}
+
+Sprite "HYPSJ0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "HYPS10", 0, 0
+}
+Sprite "MINIA0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN1", 0, 0
+}
+Sprite "MINIB0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN2", 0, 0
+}
+Sprite "MINIC0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN3", 0, 0
+}
+Sprite "MINID0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN4", 0, 0
+}
+Sprite "MINIE0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN5", 0, 0
+}
+Sprite "MINIF0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN6", 0, 0
+}
+Sprite "MINIG0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN7", 0, 0
+}
+Sprite "MINIH0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN8", 0, 0
+}
+Sprite "MINII0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN9", 0, 0
+}
+Sprite "MINIJ0", 115, 115
+{
+	XScale 3.800
+	YScale 3.800
+	Offset 56, 192
+	Patch "MIN10", 0, 0
+}

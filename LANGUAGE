@@ -1,0 +1,30 @@
+[enu default]
+//////////////////////////// GENERAL ///////////////////////////////////////////////////////////////////////////////
+PBXItems_Settings       = "\cj✦\c- PBX - Items Settings";
+PBXitems_Version        = "PBX - Items Version: 1.0";
+
+//////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
+ULTRASPHERE_PICKUP      = "UltraSphere (100 HP/AP)";
+HYPERSPHERE_PICKUP      = "HyperSphere (300 HP/AP)";
+MINISPHERE_PICKUP       = "MiniSphere (50 HP/AP)";
+
+SUPERARMOR_PICKUP       = "Picked up the Super Armor";
+HYPERARMOR_PICKUP       = "Picked up the Hyper Armor";
+MINIARMOR_PICKUP        = "Picked up the Compact Armor";
+
+BLACKBLUR_PICKUP        = "Tainted Invisibility";
+DEFLECTSPHERE_PICKUP    = "Deflection Sphere";
+ELECTAURA_PICKUP        = "Electric Aura";
+GOLDINV_PICKUP          = "Tainted Invulnerability";
+LEGENDSPHERE_PICKUP     = "Legend Sphere";
+LFSTEALORB_PICKUP       = "Lifesteal Orb";
+TERRORSPHERE_PICKUP     = "Terror Sphere";
+AMMOSPHERE_PICKUP       = "Ammo Sphere";
+GUARDSPHERE_PICKUP      = "Guard Sphere";
+REGENSPHERE_PICKUP      = "Regen Sphere";
+TIMEFREEZE_PICKUP       = "ZA WARUDO";
+
+REDSOUL_PICKUP          = "Tainted Soulsphere";
+DARKMEGA_PICKUP         = "Tainted Megasphere";
+ADRENAL_PICKUP          = "Tainted Megasphere";
+
