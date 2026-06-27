@@ -19,12 +19,12 @@ class PBX_MegaBerserk : PB_Berserk
 
 	override bool Use(bool pickup)
 	{
-        if(!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_BlackBlur, CVar.GetCvar("pb_helpflags", owner.Player)))
+        if(!PB_HelpNotificationsHandler.CheckTipEvent(1 << 6, CVar.GetCvar("pb_helpflags", owner.Player)))
 		{
 			Array<String> pbTipsBuf;
 			pbTipsBuf.Push("$PB_BERSERK_TIP_1");
 			pbTipsBuf.Push(string.format(StringTable.Localize("$PB_BERSERK_TIP_2"), PB_HelpNotificationsHandler.PB_FormatKeybinds("+pb_specialwheel")));
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "pb_helpflags", PBXItems_Tip_BlackBlur);
+			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "pb_helpflags", 1 << 6);
 		}
 		owner.A_GiveInventory("PB_PowerStrength");
 		owner.GiveBody(MEGABERSERK_HP,MEGABERSERK_MAX);
@@ -202,6 +202,7 @@ Class PBX_BlackBlur : PB_Inventory
 			Array<String> pbTipsBuf;
 			pbTipsBuf.Push("$PBX_BlackBlur_Tip1");
 			pbTipsBuf.Push("$PBX_BlackBlur_Tip2");
+			pbTipsBuf.Push("$PBX_BlackBlur_Tip3");
 			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_BlackBlur);
 		}
 		owner.A_SetBlend("DarkSlateBlue",0.75,16);
@@ -374,10 +375,12 @@ class PBX_GoldInvul : PB_Inventory
 			Array<String> pbTipsBuf;
 			pbTipsBuf.Push("$PBX_GoldInvul_Tip1");
 			pbTipsBuf.Push("$PBX_GoldInvul_Tip2");
+			pbTipsBuf.Push("$PBX_GoldInvul_Tip3");
 			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_GoldInvul);
 		}
 		owner.A_SetBlend("PaleGoldenrod",0.75,16);
 		owner.A_GiveInventory("PBXItems_InvulTaintedGiver");
+		owner.A_GiveInventory("PBX_DeflectGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("Grin");
 		return true;
 	}
@@ -483,7 +486,7 @@ class PBX_GoldInvul : PB_Inventory
 	}
 }
 class PBXItems_InvulTaintedGiver : PBX_InvulTaintedGiver 
-{Default{Powerup.Color "GoldMap";}}
+{Default{Powerup.Color "GoldMap"; Powerup.Duration GOLDINV_DURATION;}}
 
 
 // ============================================================
@@ -826,10 +829,11 @@ class PBX_RedSoulSphere : PB_Inventory
 			Array<String> pbTipsBuf;
 			pbTipsBuf.Push("$PBX_RedSoul_Tip1");
 			pbTipsBuf.Push("$PBX_RedSoul_Tip2");
+			pbTipsBuf.Push("$PBX_RedSoul_Tip3");
 			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_RedSoul);
 		}
 		owner.A_SetBlend("Red",0.75,16);
-		owner.GiveBody(150,200);
+		owner.GiveBody(REDSOUL_HP,REDSOUL_MAX);
 		return true;
 	}
 
@@ -943,11 +947,14 @@ class PBX_DarkMegaSphere : PB_Inventory
 			Array<String> pbTipsBuf;
 			pbTipsBuf.Push("$PBX_DarkMega_Tip1");
 			pbTipsBuf.Push("$PBX_DarkMega_Tip2");
+			pbTipsBuf.Push("$PBX_DarkMega_Tip3");
 			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_DarkMega);
 		}
 		owner.A_SetBlend("DarkOrange",0.75,16);
+		owner.GiveBody(DARKMEGA_HP,DARKMEGA_MAX);
 		owner.A_GiveInventory("PBX_SuperArmor");
 		owner.A_GiveInventory("PBX_TaintedRegenGiver");
+		if(pb_newmugshot) owner.A_SetMugshotState("MegasphereGrin");
 		return true;
 	}
 

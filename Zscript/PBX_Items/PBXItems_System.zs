@@ -33,41 +33,49 @@ enum PBXItems_Values{
     HYPERARMOR_AMT      = 300,
 
     MINISPHERE_HP       = 50,
-    MINISPHERE_MAX      = 300,
+    MINISPHERE_MAX      = 200,
     MINIARMOR_SV        = 60,
     MINIARMOR_AMT       = 50,
 
+    GOLDINV_DURATION    = -60,
     TERROR_DURATION     = -45,
     INFAMMO_DURATION    = -30,
     TMFREEZE_DURATION   = -45,
+
+    REDSOUL_HP   		= 150,
+    REDSOUL_MAX   		= 200,
+
+	DARKMEGA_HP   		= 200,
+    DARKMEGA_MAX   		= 200,
 
     ADRENAL_DURATION    = -15
 }
 
 class PBXItems_Handler : EventHandler
 {
+
+	PLayerPawn pm;
+
     Override void PlayerEntered(PlayerEvent e)
     {
 		// Get player pointer
-        let pm = players[e.PlayerNumber].mo;
+        pm = players[e.PlayerNumber].mo;
 		if(!pm) return;
 
 		// Dont continue if its the titlemap
         if (level.MapName == "TITLEMAP") return;
 
-		TryGiveInventory(pm, 'PBXItems_TipsManager', 'PBXItems_TipsManager');
-        // PB_HelpNotificationsHandler.PB_SendTip("$PBXitems_Version", "PBXCore_ThrowawayFlag", 1 << 33);
+		TryGiveInventory(whatToGive:'PBXItems_TipsManager', diffCheck:false);
+        PB_HelpNotificationsHandler.PB_SendTip("$PBXitems_Version", "PBXCore_ThrowawayFlag", 0 << 0);
         return;
     }
 
 	// Just a function to make everything look cleaner
-	void TryGiveInventory(PlayerPawn pm, name hasInventory, name whatToGive, int giveAmount = 1)
+	void TryGiveInventory(name hasInventory = "", name whatToGive = "", int giveAmount = 1, bool diffCheck = true)
 	{
-		if (!pm) return;
-
 		// Only give the inventory if the player still doesnt have the item
 		// this way its only given once and wont be given every map change
-		if (pm.CountInv(hasInventory) < 1) 
+		if (pm.CountInv(diffCheck ? hasInventory : whatToGive) < 1) 
 		{
 			pm.GiveInventory(whatToGive, giveAmount);
 		}
