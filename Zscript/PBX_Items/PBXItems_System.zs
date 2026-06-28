@@ -66,7 +66,6 @@ class PBXItems_Handler : EventHandler
         if (level.MapName == "TITLEMAP") return;
 
 		TryGiveInventory(whatToGive:'PBXItems_TipsManager', diffCheck:false);
-        return;
     }
 
 	// Just a function to make everything look cleaner
