@@ -1,6 +1,6 @@
 [enu default]
 //////////////////////////// GENERAL ///////////////////////////////////////////////////////////////////////////////
-PBXItems_Settings       = "\cj✦\c- PBX - Items Settings";
+PBXItems_Settings       = "\ci✦\c- PBX - Items Settings";
 PBXitems_Version        = "\ciPBX - Items Version: 1.2";
 
 //////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
@@ -12,10 +12,10 @@ SUPERARMOR_PICKUP       = "Picked up the Super Armor";
 HYPERARMOR_PICKUP       = "Picked up the Hyper Armor";
 MINIARMOR_PICKUP        = "Picked up the Compact Armor";
 
-BLACKBLUR_PICKUP        = "Tainted Invisibility";
+BLACKBLUR_PICKUP        = "Black Blur (Tainted Invisibility)";
 DEFLECTSPHERE_PICKUP    = "Deflection Sphere";
 ELECTAURA_PICKUP        = "Electric Aura";
-GOLDINV_PICKUP          = "Tainted Invulnerability";
+GOLDINV_PICKUP          = "Gold Invulnerability (Tainted Invulnerability)";
 LEGENDSPHERE_PICKUP     = "Legend Sphere";
 LFSTEALORB_PICKUP       = "Lifesteal Orb";
 TERRORSPHERE_PICKUP     = "Terror Sphere";
@@ -24,9 +24,28 @@ GUARDSPHERE_PICKUP      = "Guard Sphere";
 REGENSPHERE_PICKUP      = "Regen Sphere";
 TIMEFREEZE_PICKUP       = "ZA WARUDO";
 
-REDSOUL_PICKUP          = "Tainted Soulsphere";
-DARKMEGA_PICKUP         = "Tainted Megasphere";
+REDSOUL_PICKUP          = "Red SoulSphere (Tainted SoulSphere)";
+DARKMEGA_PICKUP         = "Dark MegaSphere (Tainted MegaSphere)";
 ADRENAL_PICKUP          = "You Found an Adrenaline";
+
+MEGABERSERK_TAG         = "Mega Berserk";
+SUPERSPHERE_TAG         = "SuperSphere";
+ULTRASPHERE_TAG         = "UltraSphere";
+HYPERSPHERE_TAG         = "HyperSphere";
+MINISPHERE_TAG          = "MiniSphere";
+
+SUPERARMOR_TAG          = "Super Armor";
+HYPERARMOR_TAG          = "Hyper Armor";
+MINIARMOR_TAG           = "Compact Armor";
+
+BLACKBLUR_TAG           = "Black Blur";
+GOLDINV_TAG             = "Gold Invulnerability";
+TIMEFREEZE_TAG          = "Time Freeze";
+
+REDSOUL_TAG             = "Tainted SoulSphere";
+DARKMEGA_TAG            = "Tainted MegaSphere";
+ADRENAL_TAG             = "Adrenaline";
+
 
 //////////////////////////// POWERUPS TIPS ///////////////////////////////////////////////////////////////////////////////
 PBX_BlackBlur_Tip1 = "The Black Blur is a Tainted Invisibility sphere.";

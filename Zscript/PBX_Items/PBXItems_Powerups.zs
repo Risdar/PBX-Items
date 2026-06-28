@@ -4,6 +4,11 @@
 // --- Mega Berserk ---
 class PBX_MegaBerserk : PB_Berserk
 {
+	Default
+	{
+		Tag "$MEGABERSERK_TAG";
+	}
+
 	Override Void PostBeginPlay()
     {
 		string invString = "PB_Berserk";
@@ -49,6 +54,12 @@ class PBX_MegaBerserk : PB_Berserk
 // --- Super Sphere ---
 class PBX_SuperSphere : PB_Soulsphere
 {
+	Default
+	{
+		Tag "$SUPERSPHERE_TAG";
+	}
+
+
 	override bool Use(bool pickup)
 	{
 		owner.A_SetBlend("Blue",0.75,16);
@@ -76,6 +87,7 @@ class PBX_UltraSphere : PB_Megasphere
 	Default
 	{
 		Inventory.PickupMessage "$ULTRASPHERE_PICKUP";
+		Tag "$ULTRASPHERE_TAG";
 	}
 
 	override bool Use(bool pickup)
@@ -102,6 +114,7 @@ class PBX_SuperArmor : PBXCore_ArmorBase
 		Armor.SaveAmount SUPERARMOR_AMT;
 		Inventory.PickupMessage "$SUPERARMOR_PICKUP";
         Inventory.AltHudIcon "ULTSA0";
+		Tag "$SUPERARMOR_TAG";
 	}
 }
 
@@ -111,6 +124,7 @@ class PBX_HyperSphere : PB_Megasphere
 	Default
 	{
 		Inventory.PickupMessage "$HYPERSPHERE_PICKUP";
+		Tag "$HYPERSPHERE_TAG";
 	}
 
 	override bool Use(bool pickup)
@@ -137,6 +151,7 @@ class PBX_HyperArmor : PBXCore_ArmorBase
 		Armor.SaveAmount HYPERARMOR_AMT;
 		Inventory.PickupMessage "$HYPERARMOR_PICKUP";
         Inventory.AltHudIcon "HYPSA0";
+		Tag "$HYPERARMOR_TAG";
 	}
 }
 
@@ -147,6 +162,7 @@ class PBX_MiniSphere : PB_Megasphere
 	{
 		Inventory.PickupMessage "$MINISPHERE_PICKUP";
 		Inventory.PickupSound "SSPH";
+		Tag "$MINISPHERE_TAG";
 	}
 
 	override bool Use(bool pickup)
@@ -172,9 +188,8 @@ class PBX_MiniArmor : PBXCore_ArmorBase
 		Armor.SavePercent MINIARMOR_SV;
 		Armor.SaveAmount MINIARMOR_AMT;
 		Inventory.PickupMessage "$MINIARMOR_PICKUP";
-		Inventory.PickupSound "ARMOR";
         Inventory.AltHudIcon "MINIA0";
-		//Scale .28;
+		Tag "$MINIARMOR_TAG";
 	}
 }
 
@@ -193,6 +208,7 @@ Class PBX_BlackBlur : PB_Inventory
 		Inventory.PickupSound "INVISIBL";
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$MINIARMOR_TAG";
 	}
 	
     override bool Use(bool pickup)
@@ -294,7 +310,7 @@ class PBX_DeflectSphere : PB_Inventory
 		Inventory.PickupSound "INVISIBL";
 		+FLOATBOB
 		floatbobstrength .4;
-		//Scale .22;
+		Tag "$DEFLECTSPHERE_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -324,7 +340,7 @@ class PBX_ElectricAuraSphere : PB_Inventory
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
 		floatbobstrength .4;
-		//Scale .22;
+		Tag "$ELECTAURA_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -354,7 +370,7 @@ class PBX_GoldInvul : PB_Inventory
 		Inventory.PickupSound "INVUL";
 		+FLOATBOB
 		floatbobstrength .4;
-		//Scale .22;
+		Tag "$GOLDINV_TAG";
 	}
 	
 	double n;
@@ -491,6 +507,7 @@ class PBX_LegendSphere : PB_Inventory
 		+FLOATBOB
 		floatbobstrength .4;
 		Scale .73;
+		Tag "$LEGENDSPHERE_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -524,6 +541,7 @@ class PBX_LifestealOrb : PB_Inventory
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$LFSTEALORB_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -580,6 +598,7 @@ class PBX_TerrorSphere : PB_Inventory
 		Inventory.PickupSound "BERSPKUP";
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$TERRORSPHERE_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -639,6 +658,7 @@ class PBX_AmmoSphere : PB_Inventory
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$AMMOSPHERE_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -671,6 +691,7 @@ class PBX_GuardSphere : PB_Inventory
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$GUARDSPHERE_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -729,6 +750,7 @@ class PBX_RegenSphere : PB_Inventory
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$REGENSPHERE_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -758,6 +780,7 @@ class PBX_TimeSphere : PB_Inventory
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$TIMEFREEZE_TAG";
 	}
 
 	override bool Use(bool pickup)
@@ -787,6 +810,7 @@ class PBX_RedSoulSphere : PB_Inventory
 		Inventory.PickupSound "SSPH";
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$REDSOUL_TAG";
 	}
 
 	int damageTimer;
@@ -905,6 +929,7 @@ class PBX_DarkMegaSphere : PB_Inventory
 	    +VISIBILITYPULSE;
 		+FLOATBOB
 		floatbobstrength .4;
+		Tag "$DARKMEGA_TAG";
 	}
 
 	override bool Use(bool pickup)
@@ -999,6 +1024,7 @@ class PBX_Adrenaline : PB_Inventory
 	{
 		Inventory.PickupMessage "$ADRENAL_PICKUP";
 		Inventory.PickupSound "misc/p_pkup";
+		Tag "$ADRENAL_TAG";
 	}
 
 	override bool Use(bool pickup)
