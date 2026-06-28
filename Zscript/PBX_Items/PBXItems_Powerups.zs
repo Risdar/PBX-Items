@@ -35,7 +35,7 @@ class PBX_MegaBerserk : PB_Berserk
 
     override string PickupMessage()
 	{
-		return string.format(ownrhp < 25 ? "Mega Berserk Pack (+%u much needed HP)" : "Mega Berserk Pack (+%u HP)",max(0,100 - ownrhp));
+		return string.format(ownrhp < 25 ? "Mega Berserk Pack (+%u much needed HP)" : "Mega Berserk Pack (+%u HP)",max(0,MEGABERSERK_HP - ownrhp));
 	}
 
 	States
@@ -59,7 +59,7 @@ class PBX_SuperSphere : PB_Soulsphere
 	
     override string PickupMessage()
 	{
-		return string.format(String.Format(ownrhp < 25 ? "SuperSphere (+%u much needed HP)" : "SuperSphere (+%u HP)",clamp(min(100, 200 - ownrhp), 0, 100)));
+		return string.format(String.Format(ownrhp < 25 ? "SuperSphere (+%u much needed HP)" : "SuperSphere (+%u HP)",clamp(min(SUPERSPHERE_HP, SUPERSPHERE_MAX - ownrhp), 0, SUPERSPHERE_HP)));
 	}
 
 	States
@@ -94,7 +94,7 @@ class PBX_UltraSphere : PB_Megasphere
 			loop;
 	}
 }
-class PBX_SuperArmor : PB_Armor
+class PBX_SuperArmor : PBXCore_ArmorBase
 {
 	Default
     {
@@ -129,7 +129,7 @@ class PBX_HyperSphere : PB_Megasphere
 			loop;
 	}
 }
-class PBX_HyperArmor : PB_Armor
+class PBX_HyperArmor : PBXCore_ArmorBase
 {
 	Default
     {
@@ -165,7 +165,7 @@ class PBX_MiniSphere : PB_Megasphere
 			loop;
 	}
 }
-class PBX_MiniArmor : PB_Armor
+class PBX_MiniArmor : PBXCore_ArmorBase
 {
 	Default
     {
@@ -197,14 +197,11 @@ Class PBX_BlackBlur : PB_Inventory
 	
     override bool Use(bool pickup)
 	{
-		if(!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_BlackBlur, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_BlackBlur_Tip1");
-			pbTipsBuf.Push("$PBX_BlackBlur_Tip2");
-			pbTipsBuf.Push("$PBX_BlackBlur_Tip3");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_BlackBlur);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_BlackBlur_Tip1");
+		tips.Push("$PBX_BlackBlur_Tip2");
+		tips.Push("$PBX_BlackBlur_Tip3");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_BlackBlur);
 		owner.A_SetBlend("DarkSlateBlue",0.75,16);
 		owner.A_GiveInventory("PBX_InvisTaintedGiver");
 		return true;
@@ -302,12 +299,9 @@ class PBX_DeflectSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_DeflectSphere, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_Deflect_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_DeflectSphere);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_Deflect_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_DeflectSphere);
 		owner.A_SetBlend("LightGreen",0.75,16);
 		owner.A_GiveInventory("PBX_DeflectGiver");
 		return true;
@@ -335,12 +329,9 @@ class PBX_ElectricAuraSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_ElectricAura, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_ElectAura_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_ElectricAura);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_ElectAura_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_ElectricAura);
 		owner.A_SetBlend("RoyalBlue1",0.75,16);
 		owner.A_GiveInventory("PBX_ElectricAuraGiver");
 		return true;
@@ -370,14 +361,11 @@ class PBX_GoldInvul : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_GoldInvul, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_GoldInvul_Tip1");
-			pbTipsBuf.Push("$PBX_GoldInvul_Tip2");
-			pbTipsBuf.Push("$PBX_GoldInvul_Tip3");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_GoldInvul);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_GoldInvul_Tip1");
+		tips.Push("$PBX_GoldInvul_Tip2");
+		tips.Push("$PBX_GoldInvul_Tip3");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_GoldInvul);
 		owner.A_SetBlend("PaleGoldenrod",0.75,16);
 		owner.A_GiveInventory("PBXItems_InvulTaintedGiver");
 		owner.A_GiveInventory("PBX_DeflectGiver");
@@ -507,12 +495,9 @@ class PBX_LegendSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_LegendSPhere, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_Legend_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_LegendSPhere);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_Legend_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_LegendSPhere);
 		owner.A_SetBlend("DarkOrange",0.75,16);
 		owner.A_GiveInventory("PBXItems_BuddhaGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("Grin");
@@ -543,12 +528,9 @@ class PBX_LifestealOrb : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_LifestealOrb, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_Lifesteal_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_LifestealOrb);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_Lifesteal_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_LifestealOrb);
 		owner.A_SetBlend("firebrick",0.75,16);
 		owner.A_GiveInventory("PBX_DrainGiver");
 		return true;
@@ -602,12 +584,9 @@ class PBX_TerrorSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_TerrorSphere, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_Terror_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_TerrorSphere);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_Terror_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_TerrorSphere);
 		owner.A_SetBlend("DarkRed",0.75,16);
 		owner.A_GiveInventory("PBXItems_FrightenerGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("BerserkGrin");
@@ -664,12 +643,9 @@ class PBX_AmmoSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_AmmoSphere, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_Ammo_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_AmmoSphere);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_Ammo_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_AmmoSphere);
 		owner.A_SetBlend("yellow",0.75,16);
 		owner.A_GiveInventory("PBXItems_InfiniteAmmoGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("Grin");
@@ -699,12 +675,9 @@ class PBX_GuardSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_GuardSphere, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_Guard_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_GuardSphere);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_Guard_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_GuardSphere);
 		owner.A_SetBlend("PaleTurquoise1",0.75,16);
 		owner.A_GiveInventory("PBXItems_ProtectionGiver");
 		return true;
@@ -760,12 +733,9 @@ class PBX_RegenSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_RegenSphere, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_Regen_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_RegenSphere);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_Regen_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_RegenSphere);
 		owner.A_SetBlend("Cyan",0.75,16);
 		owner.A_GiveInventory("PBX_RegenerationGiver");
 		return true;
@@ -824,14 +794,11 @@ class PBX_RedSoulSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_RedSoul, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_RedSoul_Tip1");
-			pbTipsBuf.Push("$PBX_RedSoul_Tip2");
-			pbTipsBuf.Push("$PBX_RedSoul_Tip3");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_RedSoul);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_RedSoul_Tip1");
+		tips.Push("$PBX_RedSoul_Tip2");
+		tips.Push("$PBX_RedSoul_Tip3");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_RedSoul);
 		owner.A_SetBlend("Red",0.75,16);
 		owner.GiveBody(REDSOUL_HP,REDSOUL_MAX);
 		return true;
@@ -942,14 +909,11 @@ class PBX_DarkMegaSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_DarkMega, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_DarkMega_Tip1");
-			pbTipsBuf.Push("$PBX_DarkMega_Tip2");
-			pbTipsBuf.Push("$PBX_DarkMega_Tip3");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_DarkMega);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_DarkMega_Tip1");
+		tips.Push("$PBX_DarkMega_Tip2");
+		tips.Push("$PBX_DarkMega_Tip3");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_DarkMega);
 		owner.A_SetBlend("DarkOrange",0.75,16);
 		owner.GiveBody(DARKMEGA_HP,DARKMEGA_MAX);
 		owner.A_GiveInventory("PBX_SuperArmor");
@@ -1039,12 +1003,9 @@ class PBX_Adrenaline : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if (!PB_HelpNotificationsHandler.CheckTipEvent(PBXItems_Tip_Adrenaline, CVar.GetCvar("PBXItems_HelpFlags", owner.Player)))
-		{
-			Array<String> pbTipsBuf;
-			pbTipsBuf.Push("$PBX_Adrenaline_Tip1");
-			PB_HelpNotificationsHandler.PB_SendTipArray(pbTipsBuf, "PBXItems_HelpFlags", PBXItems_Tip_Adrenaline);
-		}
+		Array<String> tips;
+		tips.Push("$PBX_Adrenaline_Tip1");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_HelpFlags",PBXItems_Tip_Adrenaline);
 		owner.A_SetBlend("Red",0.75,16);
 		owner.A_GiveInventory("PBXItems_AdreSpdGiver");
 		owner.A_GiveInventory("PBXItems_AdrePowGiver");

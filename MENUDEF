@@ -3,6 +3,16 @@ AddOptionMenu "PB_AddonOptions"
 {
     Submenu "$PBXItems_Settings", "PBXItesm_Menu"
 }
+
+AddOptionMenu "PBXCore_Menu"
+{
+    StaticText	"--------- PBX Items Settings ---------", 1
+    SafeCommand "Enable All PBX Items  Spawners", "set PBXItems_filter 0"
+    SafeCommand "Reset Item Tool Tips", "set PBXItems_HelpFlags 0"
+    StaticText "$PBXItems_Version",orange
+    StaticText " "
+}
+
 OptionMenu "PBXItesm_Menu"
 {
     Title "$PBXItems_Settings"
@@ -18,7 +28,7 @@ OptionMenu "PBXItesm_Menu"
 
     
     StaticText " "
-    StaticText "$PBXItems_Version",white
+    StaticText "$PBXItems_Version",orange
 }
 
 //////////////////////////// GREEN ARMOR SPAWNER ////////////////////////////////////////////////////////////////////////////////////

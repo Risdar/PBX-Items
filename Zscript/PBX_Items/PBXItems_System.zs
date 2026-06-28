@@ -54,29 +54,16 @@ enum PBXItems_Values{
 class PBXItems_Handler : EventHandler
 {
 
-	PLayerPawn pm;
-
     Override void PlayerEntered(PlayerEvent e)
     {
 		// Get player pointer
-        pm = players[e.PlayerNumber].mo;
+        let pm = players[e.PlayerNumber].mo;
 		if(!pm) return;
 
 		// Dont continue if its the titlemap
         if (level.MapName == "TITLEMAP") return;
 
-		TryGiveInventory(whatToGive:'PBXItems_TipsManager', diffCheck:false);
+		PBXCore_Handler.TryGiveInventory(pm,whatToGive:'PBXItems_TipsManager', diffCheck:false);
     }
-
-	// Just a function to make everything look cleaner
-	void TryGiveInventory(name hasInventory = "", name whatToGive = "", int giveAmount = 1, bool diffCheck = true)
-	{
-		// Only give the inventory if the player still doesnt have the item
-		// this way its only given once and wont be given every map change
-		if (pm.CountInv(diffCheck ? hasInventory : whatToGive) < 1) 
-		{
-			pm.GiveInventory(whatToGive, giveAmount);
-		}
-	}
 
 }

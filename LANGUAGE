@@ -1,7 +1,7 @@
 [enu default]
 //////////////////////////// GENERAL ///////////////////////////////////////////////////////////////////////////////
 PBXItems_Settings       = "\cj✦\c- PBX - Items Settings";
-PBXitems_Version        = "PBX - Items Version: 1.1";
+PBXitems_Version        = "\ciPBX - Items Version: 1.2";
 
 //////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
 ULTRASPHERE_PICKUP      = "UltraSphere (100 HP/AP)";
@@ -33,7 +33,7 @@ PBX_BlackBlur_Tip1 = "The Black Blur is a Tainted Invisibility sphere.";
 PBX_BlackBlur_Tip2 = "It has a longer duration and you can't get hit by seekers";
 PBX_BlackBlur_Tip3 = "But the sphere will give stealth to every monster that comes near it.";
 
-PBX_Deflect_Tip1 = "The Deflect Sphere will change the direction of every projectile that comes near the player."
+PBX_Deflect_Tip1 = "The Deflect Sphere will change the direction of every projectile that comes near the player.";
 
 PBX_ElectAura_Tip1 = "The Electric Aura Sphere will damage every enemy in a large area.";
 
@@ -49,7 +49,7 @@ PBX_Terror_Tip1 = "The Terror Sphere will make every monster run away from you."
 
 PBX_Ammo_Tip1 = "The Ammo Sphere will give you infinite ammo.";
 
-PBX_Guard_Tip1 = "The Guard Sphere will give you 75% damage reduction."
+PBX_Guard_Tip1 = "The Guard Sphere will give you 75% damage reduction.";
 
 PBX_Regen_Tip1 = "The Regen Sphere will give you health regeneration.";
 
