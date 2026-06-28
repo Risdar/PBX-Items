@@ -66,7 +66,6 @@ class PBXItems_Handler : EventHandler
         if (level.MapName == "TITLEMAP") return;
 
 		TryGiveInventory(whatToGive:'PBXItems_TipsManager', diffCheck:false);
-        PB_HelpNotificationsHandler.PB_SendTip("$PBXitems_Version", "PBXCore_ThrowawayFlag", 0 << 0);
         return;
     }
 
