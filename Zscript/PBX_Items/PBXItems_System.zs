@@ -51,19 +51,18 @@ enum PBXItems_Values{
     ADRENAL_DURATION    = -15
 }
 
-class PBXItems_Handler : EventHandler
-{
+// class PBXItems_Handler : EventHandler
+// {
 
-    Override void PlayerEntered(PlayerEvent e)
-    {
-		// Get player pointer
-        let pm = players[e.PlayerNumber].mo;
-		if(!pm) return;
+//     Override void PlayerEntered(PlayerEvent e)
+//     {
+// 		// Get player pointer
+//         let pm = players[e.PlayerNumber].mo;
+// 		if(!pm) return;
 
-		// Dont continue if its the titlemap
-        if (level.MapName == "TITLEMAP") return;
+// 		// Dont continue if its the titlemap
+//         if (level.MapName == "TITLEMAP") return;
 
-		PBXCore_Handler.TryGiveInventory(pm,whatToGive:'PBXItems_TipsManager', diffCheck:false);
-    }
+//     }
 
-}
+// }
