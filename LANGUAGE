@@ -82,3 +82,6 @@ PBX_DarkMega_Tip3 = "But the sphere will heal every monster nearby.";
 
 PBX_Adrenaline_Tip1 = "The Adrenaline will give you Quad Damage and Haste.";
 
+//////////////////////////// ITEMS TIPS ///////////////////////////////////////////////////////////////////////////////
+PBX_Repairkit_Tip1 = "The Repair Kit will teleport in ammo for your currently selected weapon.";
+PBX_Repairkit_Tip2 = "It will also repair the all of the Monster Weapons.";

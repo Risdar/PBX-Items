@@ -1,4 +1,4 @@
-enum PBXItems_eItemTipFlags
+enum PBXItems_ePowerupTipFlags
 {
 	PBXItems_Tip_BlackBlur			    = 1 << 0,
 	PBXItems_Tip_DeflectSphere          = 1 << 1,
@@ -14,6 +14,11 @@ enum PBXItems_eItemTipFlags
 	PBXItems_Tip_RedSoul                = 1 << 10,
 	PBXItems_Tip_DarkMega               = 1 << 11,
 	PBXItems_Tip_Adrenaline             = 1 << 12
+}
+
+enum PBXItems_eItemTipFlags
+{
+	PBXItems_Tip_RepairKit			    = 1 << 0
 }
 
 enum PBXItems_Values{
@@ -50,19 +55,3 @@ enum PBXItems_Values{
 
     ADRENAL_DURATION    = -15
 }
-
-// class PBXItems_Handler : EventHandler
-// {
-
-//     Override void PlayerEntered(PlayerEvent e)
-//     {
-// 		// Get player pointer
-//         let pm = players[e.PlayerNumber].mo;
-// 		if(!pm) return;
-
-// 		// Dont continue if its the titlemap
-//         if (level.MapName == "TITLEMAP") return;
-
-//     }
-
-// }

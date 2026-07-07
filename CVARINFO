@@ -1,5 +1,10 @@
 // General
+server bool PBXItems_SendTip = true;
 
 // Spawners
-server int PBXItems_filter = 0;
-server int PBXItems_HelpFlags = 0;
+server int PBXItems_powerupfilter = 0;
+server int PBXItems_itemFilter = 0;
+server int PBXItems_powerupHelpFlags = 0;
+server int PBXItems_itemHelpFlags = 0;
+
+
