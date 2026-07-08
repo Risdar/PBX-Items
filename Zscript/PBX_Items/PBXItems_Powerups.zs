@@ -1052,15 +1052,16 @@ class PBX_DarkMegaSphere : PB_Inventory
 	}
 }
 
-
-// --- Adrenaline ---
-class PBX_Adrenaline : PB_Inventory
+// --- Frost Aura ---
+class PBX_FrostAuraSphere : PB_Inventory
 {
 	Default
 	{
-		Inventory.PickupMessage "$ADRENAL_PICKUP";
-		Inventory.PickupSound "misc/p_pkup";
-		Tag "$ADRENAL_TAG";
+		Inventory.PickupMessage "$FROSTAURA_PICKUP";
+		Inventory.PickupSound "MEGASPH";
+		+FLOATBOB
+		floatbobstrength .4;
+		Tag "$FROSTAURA_PICKUP";
 	}
 
 	override bool Use(bool pickup)
@@ -1068,24 +1069,51 @@ class PBX_Adrenaline : PB_Inventory
 		if(PBXItems_SendTip)
 		{
 			Array<String> tips;
-			tips.Push("$PBX_Adrenaline_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_Adrenaline);
+			tips.Push("$PBX_FrostAura_Tip1");
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_FrostAura);
 		}
-		owner.A_SetBlend("Red",0.75,16);
-		owner.A_GiveInventory("PBXItems_AdreSpdGiver");
-		owner.A_GiveInventory("PBXItems_AdrePowGiver");
+		owner.A_SetBlend("LightCyan",0.75,16);
+		owner.A_GiveInventory("PBX_FrostAuraGiver");
 		return true;
 	}
 
 	States
 	{
-		Spawn:
-			ADRN A -1;
-			stop;
+        Spawn:
+            VFRA ABCDEFGHGFEDCB 3 bright;
+            Loop;
 	}
 }
-class PBXItems_AdreSpdGiver : PB_HasteGiver 
-{Default{Powerup.Duration ADRENAL_DURATION;}}
 
-class PBXItems_AdrePowGiver : PB_DoomGiver 
-{Default{Powerup.Duration ADRENAL_DURATION;}}
+// --- Fire Aura ---
+class PBX_FireAuraSphere : PB_Inventory
+{
+	Default
+	{
+		Inventory.PickupMessage "$FIREAURA_PICKUP";
+		Inventory.PickupSound "MEGASPH";
+		+FLOATBOB
+		floatbobstrength .4;
+		Tag "$FIREAURA_PICKUP";
+	}
+
+	override bool Use(bool pickup)
+	{
+		if(PBXItems_SendTip)
+		{
+			Array<String> tips;
+			tips.Push("$PBX_FireAura_Tip1");
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_FireAura);
+		}
+		owner.A_SetBlend("firebrick4",0.75,16);
+		owner.A_GiveInventory("PBX_FireAuraGiver");
+		return true;
+	}
+
+	States
+	{
+        Spawn:
+            VFIA ABCDEFGH 5 bright;
+            Loop;
+	}
+}

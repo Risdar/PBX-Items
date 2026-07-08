@@ -45,7 +45,7 @@ AddOptionMenu "AddonHealthArmorSpawns" after "GRENT3"
 AddOptionMenu "AddonPowerupSpawns" after "ZERKT1"
 {
     FlagOption    "Lifesteal Orb","PBXItems_powerupfilter",    "OffOn", 10
-    FlagOption    "Adrenaline","PBXItems_powerupfilter",    "OffOn", 18
+    FlagOption    "Adrenaline","PBXItems_itemFilter",    "OffOn", 1
 }
 
 // TIER 2
@@ -71,6 +71,8 @@ AddOptionMenu "AddonHealthArmorSpawns" after "SOULT2"
 {
     FlagOption    "Super Sphere","PBXItems_powerupfilter",    "OffOn", 1
     FlagOption    "Electric Aura Sphere","PBXItems_powerupfilter",    "OffOn", 7
+    FlagOption    "Frost Aura Sphere","PBXItems_powerupfilter",    "OffOn", 20
+    FlagOption    "Fire Aura Sphere","PBXItems_powerupfilter",    "OffOn", 21
 
 }
 
@@ -98,6 +100,8 @@ AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT2"
 {
     FlagOption    "Hyper Sphere","PBXItems_powerupfilter",    "OffOn", 3
     FlagOption    "Electric Aura Sphere","PBXItems_powerupfilter",    "OffOn", 7
+    FlagOption    "Frost Aura Sphere","PBXItems_powerupfilter",    "OffOn", 20
+    FlagOption    "Fire Aura Sphere","PBXItems_powerupfilter",    "OffOn", 21
 }
 
 // TIER 4

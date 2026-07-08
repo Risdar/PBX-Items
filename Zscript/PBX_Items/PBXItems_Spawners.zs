@@ -20,17 +20,19 @@ enum PBXItems_ePowerupSpawns
 
 	DisableRedSoul              = 1 << 16,
 	DisableDarkMega             = 1 << 17,
-	DisableAdrenaline           = 1 << 18,
 
-	DisableHaste                = 1 << 19,
-	DisableQuadDamage           = 1 << 20
+	DisableHaste                = 1 << 18,
+	DisableQuadDamage           = 1 << 19,
 
+	DisableFrostAura            = 1 << 20,
+	DisableFireAura             = 1 << 21
 
 }
 
 enum PBXItems_eItemSpawns
 {
-	DisableRepairKit			= 1 << 0
+	DisableRepairKit			= 1 << 0,
+	DisableAdrenaline           = 1 << 1
 
 }
 
@@ -179,12 +181,6 @@ class PBItems_Injector : PBInjector	//your injector needs to inherit from PBInje
 
         }
 
-        if(!CheckFlag(DisableAdrenaline,powerupsFlag))
-        {
-            handler.InjectSpawn('PB_BerserkSpawnerT1', 'PBX_Adrenaline', 255, 1);
-            handler.InjectSpawn('PB_BerserkSpawnerT2', 'PBX_Adrenaline', 255, 1);
-        }
-
         if(!CheckFlag(DisableHaste,powerupsFlag))
         {
             handler.InjectSpawn('PB_BlurSpawnerT1', 'PB_Haste', 255, 1);
@@ -197,6 +193,22 @@ class PBItems_Injector : PBInjector	//your injector needs to inherit from PBInje
             handler.InjectSpawn('PB_BlurSpawnerT4', 'PB_Doomsphere', 255, 1);
         }
 
+        if(!CheckFlag(DisableFrostAura,powerupsFlag))
+        {
+            handler.InjectSpawn('PB_SoulSphereSpawnerT3', 'PBX_FrostAuraSphere', 255, 1);
+            handler.InjectSpawn('PB_SoulSphereSpawnerT4', 'PBX_FrostAuraSphere', 255, 1);
+            handler.InjectSpawn('PB_MegaSpawnerT2', 'PBX_FrostAuraSphere', 255, 1);
+            handler.InjectSpawn('PB_MegaSpawnerT3', 'PBX_FrostAuraSphere', 255, 1);
+        }
+
+        if(!CheckFlag(DisableFireAura,powerupsFlag))
+        {
+            handler.InjectSpawn('PB_SoulSphereSpawnerT3', 'PBX_FireAuraSphere', 255, 1);
+            handler.InjectSpawn('PB_SoulSphereSpawnerT4', 'PBX_FireAuraSphere', 255, 1);
+            handler.InjectSpawn('PB_MegaSpawnerT2', 'PBX_FireAuraSphere', 255, 1);
+            handler.InjectSpawn('PB_MegaSpawnerT3', 'PBX_FireAuraSphere', 255, 1);
+        }
+
         // Items
         if(!CheckFlag(DisableRepairKit,itemsFlag))
         {
@@ -204,6 +216,14 @@ class PBItems_Injector : PBInjector	//your injector needs to inherit from PBInje
             handler.InjectSpawn('PB_PackSpawnerT2', 'PBX_RepairKit', 255, 1);
             handler.InjectSpawn('PB_PackSpawnerT3', 'PBX_RepairKit', 255, 1);
             handler.InjectSpawn('PB_PackSpawnerT4', 'PBX_RepairKit', 255, 1);
+        }
+
+        if(!CheckFlag(DisableAdrenaline,itemsFlag))
+        {
+            handler.InjectSpawn('PB_BerserkSpawnerT1', 'PBX_Adrenaline', 255, 1);
+            handler.InjectSpawn('PB_BerserkSpawnerT2', 'PBX_Adrenaline', 255, 1);
+            handler.InjectSpawn('PB_BerserkSpawnerT3', 'PBX_Adrenaline', 255, 1);
+            handler.InjectSpawn('PB_BerserkSpawnerT4', 'PBX_Adrenaline', 255, 1);
         }
 		
 	}

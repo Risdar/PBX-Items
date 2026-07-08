@@ -4,6 +4,8 @@ PBXItems_Settings       = "\ci✦\c- PBX - Items Settings";
 PBXitems_Version        = "\ciPBX - Items Version: 1.2";
 
 //////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
+// Pickup Messages
+// Powerups
 ULTRASPHERE_PICKUP      = "UltraSphere (100 HP/AP)";
 HYPERSPHERE_PICKUP      = "HyperSphere (300 HP/AP)";
 MINISPHERE_PICKUP       = "MiniSphere (50 HP/AP)";
@@ -26,8 +28,16 @@ TIMEFREEZE_PICKUP       = "ZA WARUDO";
 
 REDSOUL_PICKUP          = "Red SoulSphere (Tainted SoulSphere)";
 DARKMEGA_PICKUP         = "Dark MegaSphere (Tainted MegaSphere)";
+
+FROSTAURA_PICKUP        = "Frost Aura";
+FIREAURA_PICKUP         = "Fire Aura";
+
+// Items
+REPAIRKIT_PICKUP        = "Weapon Supply Kit";
 ADRENAL_PICKUP          = "You Found an Adrenaline";
 
+// Tags
+// Powerups
 MEGABERSERK_TAG         = "Mega Berserk";
 SUPERSPHERE_TAG         = "SuperSphere";
 ULTRASPHERE_TAG         = "UltraSphere";
@@ -44,6 +54,8 @@ TIMEFREEZE_TAG          = "Time Freeze";
 
 REDSOUL_TAG             = "Tainted SoulSphere";
 DARKMEGA_TAG            = "Tainted MegaSphere";
+
+// Items
 ADRENAL_TAG             = "Adrenaline";
 
 
@@ -54,7 +66,7 @@ PBX_BlackBlur_Tip3 = "But the sphere will give stealth to every monster that com
 
 PBX_Deflect_Tip1 = "The Deflect Sphere will change the direction of every projectile that comes near the player.";
 
-PBX_ElectAura_Tip1 = "The Electric Aura Sphere will damage every enemy in a large area.";
+PBX_ElectAura_Tip1 = "The Electric Aura Sphere will summon a domain of electricity that damages and stuns everything inside.";
 
 PBX_GoldInvul_Tip1 = "The Gold Invulnerability is Tainted Invulnerability sphere.";
 PBX_GoldInvul_Tip2 = "It has a longer duration and deflects projectiles.";
@@ -82,6 +94,9 @@ PBX_DarkMega_Tip3 = "But the sphere will heal every monster nearby.";
 
 PBX_Adrenaline_Tip1 = "The Adrenaline will give you Quad Damage and Haste.";
 
+PBX_FrostAura_Tip1 = "The Frost Aura Sphere will summon a domain that damages and slowly freeze everything inside.";
+PBX_FireAura_Tip1 = "The Fire Aura Sphere will slowly burn every enemies near the player.";
+
 //////////////////////////// ITEMS TIPS ///////////////////////////////////////////////////////////////////////////////
-PBX_Repairkit_Tip1 = "The Repair Kit will teleport in ammo for your currently selected weapon.";
+PBX_ElectAura_Tip1 = "The Electric Aura Sphere will summon a domain of electricity that damages and stuns everything inside.";
 PBX_Repairkit_Tip2 = "It will also repair the all of the Monster Weapons.";

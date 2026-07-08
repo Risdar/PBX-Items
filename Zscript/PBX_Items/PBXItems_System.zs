@@ -13,12 +13,15 @@ enum PBXItems_ePowerupTipFlags
 
 	PBXItems_Tip_RedSoul                = 1 << 10,
 	PBXItems_Tip_DarkMega               = 1 << 11,
-	PBXItems_Tip_Adrenaline             = 1 << 12
+
+	PBXItems_Tip_FrostAura              = 1 << 12,
+	PBXItems_Tip_FireAura               = 1 << 13
 }
 
 enum PBXItems_eItemTipFlags
 {
-	PBXItems_Tip_RepairKit			    = 1 << 0
+	PBXItems_Tip_RepairKit			    = 1 << 0,
+	PBXItems_Tip_Adrenaline             = 1 << 1
 }
 
 enum PBXItems_Values{

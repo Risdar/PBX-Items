@@ -2,10 +2,10 @@ class PBX_RepairKit : PB_Inventory
 {
     Default
     {
-        Inventory.PickupMessage "Weapon Supply Kit";
+        Inventory.PickupMessage "$REPAIRKIT_PICKUP";
         Inventory.PickupSound "RepairKit/Pickup";
         +FLOORCLIP;
-        Tag "Weapon Supply Kit";
+        Tag "$REPAIRKIT_PICKUP";
     }
 
     override void Touch(Actor toucher)
@@ -28,6 +28,8 @@ class PBX_RepairKit : PB_Inventory
             return;
         }
 
+		toucher.A_SetBlend("blue",0.75,16);
+        Inventory.PrintPickupMessage(true,pickupMsg);
         toucher.A_StartSound("RepairKit/Pickup", CHAN_ITEM);
         toucher.A_StartSound("RepairKit/Use", CHAN_ITEM);
 
@@ -104,3 +106,40 @@ class PBX_RepairKit : PB_Inventory
             stop;
     }
 }
+
+// --- Adrenaline ---
+class PBX_Adrenaline : PB_Inventory
+{
+	Default
+	{
+		Inventory.PickupMessage "$ADRENAL_PICKUP";
+		Inventory.PickupSound "misc/p_pkup";
+		Tag "$ADRENAL_TAG";
+	}
+
+	override bool Use(bool pickup)
+	{
+		if(PBXItems_SendTip)
+		{
+			Array<String> tips;
+			tips.Push("$PBX_Adrenaline_Tip1");
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_itemHelpFlags",PBXItems_Tip_Adrenaline);
+		}
+		owner.A_SetBlend("Red",0.75,16);
+		owner.A_GiveInventory("PBXItems_AdreSpdGiver");
+		owner.A_GiveInventory("PBXItems_AdrePowGiver");
+		return true;
+	}
+
+	States
+	{
+		Spawn:
+			ADRN A -1;
+			stop;
+	}
+}
+class PBXItems_AdreSpdGiver : PB_HasteGiver 
+{Default{Powerup.Duration ADRENAL_DURATION;}}
+
+class PBXItems_AdrePowGiver : PB_DoomGiver 
+{Default{Powerup.Duration ADRENAL_DURATION;}}
