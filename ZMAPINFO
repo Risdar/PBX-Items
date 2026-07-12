@@ -1,0 +1,4 @@
+Gameinfo
+{
+	addeventhandlers = "PBXItems_ShouldCanHandler"
+}

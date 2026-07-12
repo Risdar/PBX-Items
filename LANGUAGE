@@ -1,7 +1,7 @@
 [enu default]
 //////////////////////////// GENERAL ///////////////////////////////////////////////////////////////////////////////
 PBXItems_Settings       = "\ci✦\c- PBX - Items Settings";
-PBXitems_Version        = "\ciPBX - Items Version: 1.2";
+PBXitems_Version        = "\ciPBX - Items Version: 1.4";
 
 //////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
 // Pickup Messages
@@ -32,9 +32,16 @@ DARKMEGA_PICKUP         = "Dark MegaSphere (Tainted MegaSphere)";
 FROSTAURA_PICKUP        = "Frost Aura";
 FIREAURA_PICKUP         = "Fire Aura";
 
+FLIGHTSPHERE_PICKUP     = "Flight Sphere";
+
 // Items
 REPAIRKIT_PICKUP        = "Weapon Supply Kit";
 ADRENAL_PICKUP          = "You Found an Adrenaline";
+SHOULDCANNON_PICKUP     = "Shoulder Cannon installed";
+SHOULDCAN_FLAMNOTREADY  = "Flame Belch Not Ready";
+SHOULDCAN_ICENOTREADY   = "Ice Bomb Not Ready";
+SHOULDCANNON_NOFUEL     = "You Dont have Enough Fuel";
+SHOULDCANNON_NOROCKET   = "You Dont have Enough Rockets";
 
 // Tags
 // Powerups
@@ -57,6 +64,7 @@ DARKMEGA_TAG            = "Tainted MegaSphere";
 
 // Items
 ADRENAL_TAG             = "Adrenaline";
+SHOULDCANNON_TAG        = "Shoulder Cannon";
 
 
 //////////////////////////// POWERUPS TIPS ///////////////////////////////////////////////////////////////////////////////
@@ -99,4 +107,10 @@ PBX_FireAura_Tip1 = "The Fire Aura Sphere will slowly burn every enemies near th
 
 //////////////////////////// ITEMS TIPS ///////////////////////////////////////////////////////////////////////////////
 PBX_ElectAura_Tip1 = "The Electric Aura Sphere will summon a domain of electricity that damages and stuns everything inside.";
+
+PBX_Repairkit_Tip1 = "The Weapon Repair Kit will spawn ammo for the currently selected weapon.";
 PBX_Repairkit_Tip2 = "It will also repair the all of the Monster Weapons.";
+
+PBX_ShouldCan_Tip1 = "The Shoulder Cannon lets you fire a flame belch or an ice bomb using fuel or rockets respectively.";
+PBX_ShouldCan_Tip2 = "You can use the the flame belch by using %s and the ice bomb by using %s.";
+

@@ -21,7 +21,8 @@ enum PBXItems_ePowerupTipFlags
 enum PBXItems_eItemTipFlags
 {
 	PBXItems_Tip_RepairKit			    = 1 << 0,
-	PBXItems_Tip_Adrenaline             = 1 << 1
+	PBXItems_Tip_Adrenaline             = 1 << 1,
+	PBXItems_Tip_ShoulderCannon         = 1 << 2
 }
 
 enum PBXItems_Values{
@@ -57,4 +58,23 @@ enum PBXItems_Values{
     DARKMEGA_MAX   		= 200,
 
     ADRENAL_DURATION    = -15
+}
+
+class PBXItems_ShouldCanHandler : EventHandler
+{
+	override void NetworkProcess(ConsoleEvent e)
+	{
+		if (e.Player < 0 || !playeringame[e.Player]) return;
+
+		let pmo = players[e.Player].mo;
+		if (pmo == null) return;
+
+		let cannon = PBX_ShoulderCannon(pmo.FindInventory("PBX_ShoulderCannon"));
+		if (cannon == null) return;
+
+		if (e.Name ~== "UseFlameBelch")
+			cannon.RequestFire(PBX_ShoulderCannon.EQUIP_FLAMEBELCH);
+		else if (e.Name ~== "UseIceBomb")
+			cannon.RequestFire(PBX_ShoulderCannon.EQUIP_ICEBOMB);
+	}
 }

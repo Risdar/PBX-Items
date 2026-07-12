@@ -1,0 +1,5 @@
+addkeysection "Shoulder Cannon" PBX_KEY
+Alias pbx_doflame	"netevent UseFlameBelch"
+Alias pbx_doice	"netevent UseIceBomb"
+AddMenuKey "Shoulder Cannon: Flame Belch" 	pbx_doflame
+AddMenuKey "Shoulder Cannon: Ice Bomb" 	    pbx_doice

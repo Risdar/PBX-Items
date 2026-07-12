@@ -2,6 +2,15 @@ This is a combination of a few mods:
 1. PB's More Items by HyperExia
 2. Unless You Got Powah! by Ltnumbnutsthesecond (https://forum.zdoom.org/viewtopic.php?t=80895)
 
+// Flight Sphere
+Submitted: scalliano
+Code: scalliano, RichardDS90 (ZScript Conversion)
+GLDefs: Ghastly_dragon
+Sounds: None
+Sprites: Id Software
+Sprite Edit: scalliano
+Idea Base: Doom-class Flight powerup from Generations Arena mod for Q3
+
 Here is the full credit list of Unless You Got Powah! :
 //credits of this mod goes to Realm667, OutsiderAlien for teaching me stuff about decorate//
 //below will be a list of the modders resources that made this mod possible//

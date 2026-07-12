@@ -6,6 +6,7 @@ class PBX_MegaBerserk : PB_Berserk
 {
 	Default
 	{
+		Inventory.AltHudIcon "PSTRC0";
 		Tag "$MEGABERSERK_TAG";
 	}
 
@@ -56,6 +57,7 @@ class PBX_SuperSphere : PB_Soulsphere
 {
 	Default
 	{
+		Inventory.AltHudIcon "SPRSA0";
 		Tag "$SUPERSPHERE_TAG";
 	}
 
@@ -86,6 +88,7 @@ class PBX_UltraSphere : PB_Megasphere
 {
 	Default
 	{
+		Inventory.AltHudIcon "ULTSA0";
 		Inventory.PickupMessage "$ULTRASPHERE_PICKUP";
 		Tag "$ULTRASPHERE_TAG";
 	}
@@ -123,6 +126,7 @@ class PBX_HyperSphere : PB_Megasphere
 {
 	Default
 	{
+		Inventory.AltHudIcon "HYPSA0";
 		Inventory.PickupMessage "$HYPERSPHERE_PICKUP";
 		Tag "$HYPERSPHERE_TAG";
 	}
@@ -160,6 +164,7 @@ class PBX_MiniSphere : PB_Megasphere
 {
 	Default
 	{
+		Inventory.AltHudIcon "MINIA0";
 		Inventory.PickupMessage "$MINISPHERE_PICKUP";
 		Inventory.PickupSound "SSPH";
 		Tag "$MINISPHERE_TAG";
@@ -204,6 +209,7 @@ Class PBX_BlackBlur : PB_Inventory
         //$Category Powerups/Tainted
         //%Tag Tainted Invisibility Sphere
         RenderStyle "Translucent";
+		Inventory.AltHudIcon "TVISA0";
         Inventory.PickupMessage "$BLACKBLUR_PICKUP";
 		Inventory.PickupSound "INVISIBL";
 		+FLOATBOB
@@ -309,6 +315,7 @@ class PBX_DeflectSphere : PB_Inventory
 	Default
 	{
 		RenderStyle "Translucent";
+		Inventory.AltHudIcon "PDFSA0";
 		Inventory.PickupMessage "$DEFLECTSPHERE_PICKUP";
 		Inventory.PickupSound "INVISIBL";
 		+FLOATBOB
@@ -342,6 +349,7 @@ class PBX_ElectricAuraSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "VELAA0";
 		Inventory.PickupMessage "$ELECTAURA_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -375,6 +383,7 @@ class PBX_GoldInvul : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "TINVA0";
 		Inventory.PickupMessage "$GOLDINV_PICKUP";
 		Inventory.PickupSound "INVUL";
 		+FLOATBOB
@@ -514,6 +523,7 @@ class PBX_LegendSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "LESPA0";
 		Inventory.PickupMessage "$LEGENDSPHERE_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -552,6 +562,7 @@ class PBX_LifestealOrb : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "RAGEA0";
 		Inventory.PickupMessage "$LFSTEALORB_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -580,38 +591,12 @@ class PBX_LifestealOrb : PB_Inventory
 	}
 }
 
-// --- PowerFlight ---
-// class PBX_BuddhaSphere : PB_Inventory
-// {
-// 	Default
-// 	{
-// 		Inventory.PickupMessage "Legend Sphere";
-// 		Inventory.PickupSound "MEGASPH";
-// 		+FLOATBOB
-// 		floatbobstrength .4;
-// 		Scale .73;
-// 	}
-
-// 	override bool Use(bool pickup)
-// 	{
-// 		owner.A_SetBlend("DarkOrange",0.75,16);
-// 		owner.A_GiveInventory("PBXItems_BuddhaGiver");
-// 		return true;
-// 	}
-
-// 	States
-// 	{
-// 	Spawn:
-// 		LESP ABCD 6 bright;
-// 		loop;
-// 	}
-// }
-
 // --- Terror Sphere ---
 class PBX_TerrorSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "TERRA0";
 		Inventory.PickupMessage "$TERRORSPHERE_PICKUP";
 		Inventory.PickupSound "BERSPKUP";
 		+FLOATBOB
@@ -636,7 +621,7 @@ class PBX_TerrorSphere : PB_Inventory
 	States
 	{
 		Spawn:
-			TERR ABCDE 6 bright;
+			TERR ABCD 6 bright;
 			loop;
 	}
 }
@@ -675,6 +660,7 @@ class PBX_AmmoSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "AMSPA0";
 		Inventory.PickupMessage "$AMMOSPHERE_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -711,6 +697,7 @@ class PBX_GuardSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "GARDA0";
 		Inventory.PickupMessage "$GUARDSPHERE_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -773,6 +760,7 @@ class PBX_RegenSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "REGNA0";
 		Inventory.PickupMessage "$REGENSPHERE_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -806,6 +794,7 @@ class PBX_TimeSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "TIMEA0";
 		Inventory.PickupMessage "$TIMEFREEZE_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -836,6 +825,7 @@ class PBX_RedSoulSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "TSOUA0";
 		Inventory.PickupMessage "$REDSOUL_PICKUP";
 		Inventory.PickupSound "SSPH";
 		+FLOATBOB
@@ -957,6 +947,7 @@ class PBX_DarkMegaSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "TMEGA0";
 		Inventory.PickupMessage "$DARKMEGA_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 	    +VISIBILITYPULSE;
@@ -1057,6 +1048,7 @@ class PBX_FrostAuraSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "VFRAA0";
 		Inventory.PickupMessage "$FROSTAURA_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -1090,6 +1082,7 @@ class PBX_FireAuraSphere : PB_Inventory
 {
 	Default
 	{
+		Inventory.AltHudIcon "VFIAA0";
 		Inventory.PickupMessage "$FIREAURA_PICKUP";
 		Inventory.PickupSound "MEGASPH";
 		+FLOATBOB
@@ -1115,5 +1108,33 @@ class PBX_FireAuraSphere : PB_Inventory
         Spawn:
             VFIA ABCDEFGH 5 bright;
             Loop;
+	}
+}
+
+// --- PowerFlight ---
+class PBX_FlightSphere : PB_Inventory
+{
+	Default
+	{
+		Inventory.AltHudIcon "FLYTA0";
+		Inventory.PickupMessage "$FLIGHTSPHERE_PICKUP";
+		Inventory.PickupSound "MEGASPH";
+		+FLOATBOB
+		floatbobstrength .4;
+		Tag "$FLIGHTSPHERE_PICKUP";
+	}
+
+	override bool Use(bool pickup)
+	{
+		owner.A_SetBlend("SteelBlue1",0.75,16);
+		owner.A_GiveInventory("PBX_FlightGiver");
+		return true;
+	}
+
+	States
+	{
+		Spawn:
+			FLYT ABCD 6 bright;
+			loop;
 	}
 }
