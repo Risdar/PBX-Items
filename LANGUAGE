@@ -114,3 +114,5 @@ PBX_Repairkit_Tip2 = "It will also repair the all of the Monster Weapons.";
 PBX_ShouldCan_Tip1 = "The Shoulder Cannon lets you fire a flame belch or an ice bomb using fuel or rockets respectively.";
 PBX_ShouldCan_Tip2 = "You can use the the flame belch by using %s and the ice bomb by using %s.";
 
+//////////////////////////// MENU TIPS ///////////////////////////////////////////////////////////////////////////////
+TIP_pbxitems_startwithshouldercannon = "If enabled, the player will start with the Shoulder Cannon equipped. (Automatically disabled if GloryKill is loaded)";

@@ -149,7 +149,7 @@ class PBXItems_AdrePowGiver : PB_DoomGiver
 {Default{Powerup.Duration ADRENAL_DURATION;}}
 
 // Shoulder Cannon
-#include "./ShoulderCannonHelpers.zs" // Contains the projectiles used by the item
+#include "./HelperFiles/ShoulderCannonHelpers.zs" // Contains the projectiles used by the item
 class PBX_ShoulderCannon : CustomInventory
 {
 	Default
@@ -201,6 +201,8 @@ class PBX_ShoulderCannon : CustomInventory
 		for (int i = 0; i < EQUIP_COUNT; i++)
 			isReady[i] = true; // Sets Every Type to Ready
 		pendingSlot = EQUIP_NONE;
+		other.A_GiveInventory(FUEL_AMMO, FUEL_AMMO_GIVE);
+		other.A_GiveInventory(ROCKET_AMMO, ROCKET_AMMO_GIVE);
 		super.AttachToOwner(other);
 	}
 
@@ -225,15 +227,13 @@ class PBX_ShoulderCannon : CustomInventory
 				Array<String> tips;
 				tips.Push("$PBX_ShouldCan_Tip1");
 				tips.Push(string.format(
-							StringTable.Localize("$PBX_ShouldCan_Tip2"),
-							PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_doflame"), 
-							PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_doice")
-						)
-					);
+						StringTable.Localize("$PBX_ShouldCan_Tip2"),
+						PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_doflame"), 
+						PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_doice")
+					)
+				);
 				PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_itemHelpFlags",PBXItems_Tip_ShoulderCannon);
 			}
-            toucher.A_GiveInventory(FUEL_AMMO, FUEL_AMMO_GIVE);
-            toucher.A_GiveInventory(ROCKET_AMMO, ROCKET_AMMO_GIVE);
         }
         return pickup;
     }

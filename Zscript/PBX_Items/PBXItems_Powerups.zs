@@ -365,6 +365,7 @@ class PBX_ElectricAuraSphere : PB_Inventory
 			tips.Push("$PBX_ElectAura_Tip1");
 			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_ElectricAura);
 		}
+		owner.GiveBody(AURASPHERE_HP,AURASPHERE_MAX);
 		owner.A_SetBlend("RoyalBlue1",0.75,16);
 		owner.A_GiveInventory("PBX_ElectricAuraGiver");
 		return true;
@@ -1064,6 +1065,7 @@ class PBX_FrostAuraSphere : PB_Inventory
 			tips.Push("$PBX_FrostAura_Tip1");
 			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_FrostAura);
 		}
+		owner.GiveBody(AURASPHERE_HP,AURASPHERE_MAX);
 		owner.A_SetBlend("LightCyan",0.75,16);
 		owner.A_GiveInventory("PBX_FrostAuraGiver");
 		return true;
@@ -1098,6 +1100,7 @@ class PBX_FireAuraSphere : PB_Inventory
 			tips.Push("$PBX_FireAura_Tip1");
 			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_FireAura);
 		}
+		owner.GiveBody(AURASPHERE_HP,AURASPHERE_MAX);
 		owner.A_SetBlend("firebrick4",0.75,16);
 		owner.A_GiveInventory("PBX_FireAuraGiver");
 		return true;

@@ -1,5 +1,6 @@
 // General
 server bool PBXItems_SendTip = true;
+server bool pbxitems_startwithshouldercannon = false;
 
 // Spawners
 server int PBXItems_powerupfilter = 0;

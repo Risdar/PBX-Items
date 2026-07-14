@@ -21,6 +21,7 @@ OptionMenu "PBXItesm_Menu"
     Position	-48
 
     StaticText	"--------- General Settings ---------", 1
+    Option "Start with the Equipment Launcher", "pbxitems_startwithshouldercannon", "OnOff","PBXCore_GlorykillLoaded",1,1
     Option  "Enable Items Tooltips", "PBXItems_SendTip", "OnOff","PBXCore_SendTip"
     SafeCommand "Enable All PBX Items  Spawners", "resetcvar PBXItems_powerupfilter; resetcvar PBXItems_itemFilter"
     SafeCommand "Reset Item Tool Tips", "resetcvar PBXItems_powerupHelpFlags; resetcvar PBXItems_itemHelpFlags"

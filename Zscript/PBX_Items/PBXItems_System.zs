@@ -25,7 +25,8 @@ enum PBXItems_eItemTipFlags
 	PBXItems_Tip_ShoulderCannon         = 1 << 2
 }
 
-enum PBXItems_Values{
+enum PBXItems_Values
+{
     MEGABERSERK_HP      = 200,
     MEGABERSERK_MAX     = 200,
 
@@ -57,11 +58,15 @@ enum PBXItems_Values{
 	DARKMEGA_HP   		= 200,
     DARKMEGA_MAX   		= 200,
 
+    AURASPHERE_HP   	= 100,
+    AURASPHERE_MAX   	= 200,
+
     ADRENAL_DURATION    = -15
 }
 
-class PBXItems_ShouldCanHandler : EventHandler
+class PBXItems_Handler : EventHandler
 {
+	// Handles the Shoulder Cannon input
 	override void NetworkProcess(ConsoleEvent e)
 	{
 		if (e.Player < 0 || !playeringame[e.Player]) return;
@@ -77,4 +82,18 @@ class PBXItems_ShouldCanHandler : EventHandler
 		else if (e.Name ~== "UseIceBomb")
 			cannon.RequestFire(PBX_ShoulderCannon.EQUIP_ICEBOMB);
 	}
+
+	// Gives the player shoulder cannon if enabled
+	Override void PlayerEntered(PlayerEvent e)
+    {
+		// Get player pointer
+        let pm = players[e.PlayerNumber].mo;
+		if(!pm) return;
+
+		// Dont continue if its the titlemap
+        if (level.MapName == "TITLEMAP") return;
+
+        if(pbxitems_startwithshouldercannon && !PBXCore_GlorykillLoaded) 
+			PBXCore_Handler.TryGiveInventory(pm,whatToGive:'PBX_ShoulderCannon', diffCheck:false);
+    }
 }
