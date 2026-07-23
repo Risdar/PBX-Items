@@ -82,13 +82,13 @@ PBX_GoldInvul_Tip3 = "But the sphere will make every monster near it invulnerabl
 
 PBX_Legend_Tip1 = "The Legend Sphere will make you not go below 1 HP.";
 
-PBX_Lifesteal_Tip1 = "The Lifesteal Orb will heal 50% of the damage you dealt.";
+PBX_Lifesteal_Tip1 = "The Lifesteal Orb will heal half of the damage you dealt.";
 
 PBX_Terror_Tip1 = "The Terror Sphere will make every monster run away from you.";
 
 PBX_Ammo_Tip1 = "The Ammo Sphere will give you infinite ammo.";
 
-PBX_Guard_Tip1 = "The Guard Sphere will give you 75% damage reduction.";
+PBX_Guard_Tip1 = "The Guard Sphere will give you 75 Percent damage reduction.";
 
 PBX_Regen_Tip1 = "The Regen Sphere will give you health regeneration.";
 
