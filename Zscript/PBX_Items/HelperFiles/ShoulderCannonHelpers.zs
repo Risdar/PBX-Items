@@ -250,6 +250,7 @@ class PBX_GKDetectFloorIce : Actor
         Alpha 0.9;
         Damage 0;
         DamageType "Blood";
+        BounceType "Doom";
         +MISSILE;
         +CLIENTSIDEONLY;
         +NOTELEPORT;
@@ -258,7 +259,6 @@ class PBX_GKDetectFloorIce : Actor
         +NODAMAGETHRUST;
         +MOVEWITHSECTOR;
         -DONTSPLASH;
-        +DOOMBOUNCE;
         BounceFactor 0.01;
     }
 
@@ -335,6 +335,7 @@ class PBX_GKDetectFloorCraterIce : Actor
         StencilColor "Black";
         Alpha 0.9;
         DamageType "Blood";
+        BounceType "Doom";
         +MISSILE;
         +CLIENTSIDEONLY;
         +NOTELEPORT;
@@ -343,7 +344,6 @@ class PBX_GKDetectFloorCraterIce : Actor
         +NODAMAGETHRUST;
         +MOVEWITHSECTOR;
         -DONTSPLASH;
-        +DOOMBOUNCE;
         BounceFactor 0.01;
     }
     
