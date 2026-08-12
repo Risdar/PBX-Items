@@ -162,3 +162,9 @@ AddOptionMenu "AddonAmmoSpawns" after "PACKT2"
 {
     FlagOption    "Shoulder Cannon","PBXItems_itemFilter",    "OffOn", 2
 }
+
+//////////////////////////// AMMO SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+AddOptionMenu "AddonAmmoSpawns" after "BROKT2"
+{
+    FlagOption  "Jet Pack","PBXItems_itemFilter",    "OffOn", 3
+}

@@ -35,7 +35,8 @@ enum PBXItems_eItemSpawns
 {
 	DisableRepairKit			= 1 << 0,
 	DisableAdrenaline           = 1 << 1,
-	DisableShoulderCannon       = 1 << 2
+	DisableShoulderCannon       = 1 << 2,
+	DisableJetPack              = 1 << 3
 
 }
 
@@ -240,6 +241,12 @@ class PBItems_Injector : PBInjector	//your injector needs to inherit from PBInje
             handler.InjectSpawn('PB_PackSpawnerT2', 'PBX_ShoulderCannon', 255, 1);
             handler.InjectSpawn('PB_PackSpawnerT3', 'PBX_ShoulderCannon', 255, 1);
             handler.InjectSpawn('PB_PackSpawnerT4', 'PBX_ShoulderCannon', 255, 1);
+        }
+
+        if(!CheckFlag(DisableJetPack,itemsFlag))
+        {
+            handler.InjectSpawn('PB_RocketBoxSpawnerT2', 'PBX_Jetpack', 255, 1);
+            handler.InjectSpawn('PB_RocketBoxSpawnerT3', 'PBX_Jetpack', 255, 1);
         }
 		
 	}

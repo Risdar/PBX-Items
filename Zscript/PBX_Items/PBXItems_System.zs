@@ -22,7 +22,8 @@ enum PBXItems_eItemTipFlags
 {
 	PBXItems_Tip_RepairKit			    = 1 << 0,
 	PBXItems_Tip_Adrenaline             = 1 << 1,
-	PBXItems_Tip_ShoulderCannon         = 1 << 2
+	PBXItems_Tip_ShoulderCannon         = 1 << 2,
+	PBXItems_Tip_JetPack         		= 1 << 3
 }
 
 enum PBXItems_Values
@@ -61,26 +62,49 @@ enum PBXItems_Values
     AURASPHERE_HP   	= 100,
     AURASPHERE_MAX   	= 200,
 
-    ADRENAL_DURATION    = -15
+	// Items
+    ADRENAL_DURATION    = -15,
+
+	FLAME_AMMO_TAKE		= 20,
+	ICE_AMMO_TAKE		= 1,
+
+	JETPACK_FUEL_TAKE	= 5 	//This amount is taken every second the jetpack is active
 }
 
 class PBXItems_Handler : EventHandler
 {
-	// Handles the Shoulder Cannon input
+	// Handles the Shoulder Cannon and JetPack input
 	override void NetworkProcess(ConsoleEvent e)
 	{
-		if (e.Player < 0 || !playeringame[e.Player]) return;
+		if (e.Player < 0 || !playeringame[e.Player]) 
+			return;
 
 		let pmo = players[e.Player].mo;
-		if (pmo == null) return;
+		if (!pmo) return;
 
+		checkShoulderCannon(e,pmo);
+		checkJetpack(e,pmo);
+		
+	}
+
+	void checkShoulderCannon(ConsoleEvent e, PlayerPawn pmo)
+	{
 		let cannon = PBX_ShoulderCannon(pmo.FindInventory("PBX_ShoulderCannon"));
-		if (cannon == null) return;
+		if (!cannon) return;
 
-		if (e.Name ~== "UseFlameBelch")
+		if (e.Name ~== "PBX_UseFlameBelch")
 			cannon.RequestFire(PBX_ShoulderCannon.EQUIP_FLAMEBELCH);
-		else if (e.Name ~== "UseIceBomb")
+		else if (e.Name ~== "PBX_UseIceBomb")
 			cannon.RequestFire(PBX_ShoulderCannon.EQUIP_ICEBOMB);
+	}
+
+	void checkJetpack(ConsoleEvent e, PlayerPawn pmo)
+	{
+		let jetpack = PBX_Jetpack(pmo.FindInventory("PBX_Jetpack"));
+		if (!jetpack) return;
+
+		if (e.Name ~== "PBX_ToggleJetpack")
+			jetpack.toggleJetpack();
 	}
 
 	// Gives the player shoulder cannon if enabled
