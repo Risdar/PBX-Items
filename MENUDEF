@@ -10,7 +10,7 @@ AddOptionMenu "PBXCore_Menu"
     Option  "Enable Items Tooltips", "PBXItems_SendTip", "OnOff","PBXCore_SendTip"
     SafeCommand "Enable All PBX Items  Spawners", "resetcvar PBXItems_powerupfilter; resetcvar PBXItems_itemFilter"
     SafeCommand "Reset Item Tool Tips", "resetcvar PBXItems_powerupHelpFlags; resetcvar PBXItems_itemHelpFlags"
-    SafeCommand "Reset Duration Settings", "resetcvar PBXItems_goldinv_duration; resetcvar PBXItems_terror_duration; resetcvar PBXItems_infammo_duration; resetcvar PBXItems_timefreeze_duration; resetcvar PBXItems_adrenaline_duration"
+    SafeCommand "Reset PBX Items Durations", "resetcvar PBXItems_goldinv_duration; resetcvar PBXItems_terror_duration; resetcvar PBXItems_infammo_duration; resetcvar PBXItems_timefreeze_duration; resetcvar PBXItems_adrenaline_duration"
     StaticText "$PBXItems_Version",orange
     StaticText " "
 }
@@ -28,12 +28,12 @@ OptionMenu "PBXItesm_Menu"
     SafeCommand "Reset Item Tool Tips", "resetcvar PBXItems_powerupHelpFlags; resetcvar PBXItems_itemHelpFlags"
     StaticText " "
     StaticText	"--------- PBX Items Duration Settings ---------", 1
-    Slider "Gold Invulnerability",             "pbxitems_goldinv_duration",        1, 500, 1
-    Slider "Terror",                    "pbxitems_terror_duration",         1, 500, 1
-    Slider "Infinite Ammo",             "pbxitems_infammo_duration",        1, 500, 1
-    Slider "Time Freeze",             "pbxitems_timefreeze_duration",     1, 500, 1
-    Slider "Adrenaline",             "pbxitems_adrenaline_duration",     1, 500, 1
-    SafeCommand "Reset Duration Settings", "resetcvar PBXItems_goldinv_duration; resetcvar PBXItems_terror_duration; resetcvar PBXItems_infammo_duration; resetcvar PBXItems_timefreeze_duration; resetcvar PBXItems_adrenaline_duration"
+    Slider "Gold Invulnerability Sphere",             "pbxitems_goldinv_duration",        1, 500, 1
+    Slider "Terror Sphere",                    "pbxitems_terror_duration",         1, 500, 1
+    Slider "Infinite Ammo Sphere",             "pbxitems_infammo_duration",        1, 500, 1
+    Slider "Time Freeze Sphere",             "pbxitems_timefreeze_duration",     1, 500, 1
+    Slider "Adrenaline Sphere",             "pbxitems_adrenaline_duration",     1, 500, 1
+    SafeCommand "Reset PBX Items Durations", "resetcvar PBXItems_goldinv_duration; resetcvar PBXItems_terror_duration; resetcvar PBXItems_infammo_duration; resetcvar PBXItems_timefreeze_duration; resetcvar PBXItems_adrenaline_duration"
 
 
     /* Command "Reset PBX Armor Tips", "set PBXWeapons_WeaponHelpFlags 0; set PBXWeapons_UpgradeHelpFlags 0" */
@@ -126,7 +126,7 @@ AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT4"
 // TIER 1
 AddOptionMenu "AddonPowerupSpawns" after "INVLT1"
 {
-    FlagOption    "Gold Invulnerability","PBXItems_powerupfilter",    "OffOn", 8
+    FlagOption    "Gold Invulnerability Sphere","PBXItems_powerupfilter",    "OffOn", 8
 }
 
 // TIER 2

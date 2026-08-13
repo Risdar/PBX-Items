@@ -142,23 +142,9 @@ class PBX_Adrenaline : PB_Inventory
 			stop;
 	}
 }
-class PBXItems_AdreSpdGiver : PB_HasteGiver 
-{
-	override void BeginPlay()
-	{
-		super.BeginPlay();
-		EffectTics = PBX_PowerupDurations.GetByCVar("pbxitems_adrenaline_duration");
-	}
-}
+class PBXItems_AdreSpdGiver : PB_HasteGiver {mixin PBXItems_Duration;}
 
-class PBXItems_AdrePowGiver : PB_DoomGiver 
-{
-	override void BeginPlay()
-	{
-		super.BeginPlay();
-		EffectTics = PBX_PowerupDurations.GetByCVar("pbxitems_adrenaline_duration");
-	}
-}
+class PBXItems_AdrePowGiver : PB_DoomGiver {mixin PBXItems_Duration;}
 
 // Shoulder Cannon
 #include "./HelperFiles/ShoulderCannonHelpers.zs" // Contains the projectiles used by the item

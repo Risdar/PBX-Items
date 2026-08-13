@@ -513,12 +513,8 @@ class PBX_GoldInvul : PB_Inventory
 }
 class PBXItems_InvulTaintedGiver : PBX_InvulTaintedGiver 
 {
+	mixin PBXItems_Duration;
 	Default{Powerup.Color "GoldMap";}
-	override void BeginPlay()
-	{
-		super.BeginPlay();
-		EffectTics = PBX_PowerupDurations.GetByCVar("pbxitems_goldinv_duration");
-	}
 }
 
 
@@ -635,12 +631,8 @@ class PBX_TerrorSphere : PB_Inventory
 }
 class PBXItems_FrightenerGiver : PBX_FrightenerGiver 
 {
+	mixin PBXItems_Duration;
 	Default{Powerup.Color "GoldMap";}
-	override void BeginPlay()
-	{
-		super.BeginPlay();
-		EffectTics = PBX_PowerupDurations.GetByCVar("pbxitems_terror_duration");
-	}
 }
 // --- PowerHighJump ---
 // class PBX_BuddhaSphere : PB_Inventory
@@ -705,12 +697,8 @@ class PBX_AmmoSphere : PB_Inventory
 }
 class PBXItems_InfiniteAmmoGiver : PBX_InfiniteAmmoGiver 
 {
+	mixin PBXItems_Duration;
 	Default{Powerup.Color "255 0 0", 0.4;}
-	override void BeginPlay()
-	{
-		super.BeginPlay();
-		EffectTics = PBX_PowerupDurations.GetByCVar("pbxitems_infammo_duration");
-	}
 }
 
 // --- Guard Sphere  ---
@@ -839,12 +827,8 @@ class PBX_TimeSphere : PB_Inventory
 }
 class PBXItems_TimeFreezeGiver : PBX_TimeFreezeGiver 
 {
+	mixin PBXItems_Duration;
 	Default{Powerup.Color "Goldmap";}
-	override void BeginPlay()
-	{
-		super.BeginPlay();
-		EffectTics = PBX_PowerupDurations.GetByCVar("pbxitems_timefreeze_duration");
-	}
 }
 
 // --- Red Soulsphere ---

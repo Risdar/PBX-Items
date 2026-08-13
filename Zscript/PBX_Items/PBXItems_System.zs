@@ -64,6 +64,31 @@ enum PBXItems_Values
 	JETPACK_FUEL_TAKE	= 5 	//This amount is taken every second the jetpack is active
 }
 
+mixin class PBXItems_Duration
+{
+    override void BeginPlay()
+	{
+		super.BeginPlay();
+		name cvr = getDuration(self);
+		EffectTics = cvr != '' ? PBXCore_Duration.GetByCVar(cvr) : 0;
+	}
+
+    name getDuration(actor mActor)
+	{
+		switch(mActor.getClassName())
+		{
+			case 'PBXItems_InvulTaintedGiver': 	    return 'pbxitems_goldinv_duration';
+			case 'PBXItems_FrightenerGiver': 		return 'pbxitems_terror_duration';
+			case 'PBXItems_InfiniteAmmoGiver': 	    return 'pbxitems_infammo_duration';
+			case 'PBXItems_TimeFreezeGiver': 		return 'pbxitems_timefreeze_duration';
+			case 'PBXItems_AdreSpdGiver':
+			case 'PBXItems_AdrePowGiver': 			return 'pbxitems_adrenaline_duration';
+		}
+		return '';
+	}
+
+}
+
 class PBXItems_Handler : EventHandler
 {
 	// Handles the Shoulder Cannon and JetPack input
