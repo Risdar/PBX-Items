@@ -10,5 +10,14 @@ server int PBXItems_itemHelpFlags = 0;
 
 // Itmes
 
+// Durations
+server int pbxitems_goldinv_duration      = 60;
+server int pbxitems_terror_duration       = 45;
+server int pbxitems_infammo_duration      = 30;
+server int pbxitems_timefreeze_duration   = 45;
+
+server int pbxitems_adrenaline_duration   = 15;
+
+
 
 

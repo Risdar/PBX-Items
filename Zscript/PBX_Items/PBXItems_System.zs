@@ -48,11 +48,6 @@ enum PBXItems_Values
     MINIARMOR_SV        = 60,
     MINIARMOR_AMT       = 50,
 
-    GOLDINV_DURATION    = -60,
-    TERROR_DURATION     = -45,
-    INFAMMO_DURATION    = -30,
-    TMFREEZE_DURATION   = -45,
-
     REDSOUL_HP   		= 150,
     REDSOUL_MAX   		= 200,
 
@@ -63,8 +58,6 @@ enum PBXItems_Values
     AURASPHERE_MAX   	= 200,
 
 	// Items
-    ADRENAL_DURATION    = -15,
-
 	FLAME_AMMO_TAKE		= 20,
 	ICE_AMMO_TAKE		= 1,
 
