@@ -7,10 +7,10 @@ AddOptionMenu "PB_AddonOptions"
 AddOptionMenu "PBXCore_Menu"
 {
     StaticText	"--------- PBX Items Settings ---------", 1
-    Option  "Enable Items Tooltips", "PBXItems_SendTip", "OnOff","PBXCore_SendTip"
-    SafeCommand "Enable All PBX Items  Spawners", "resetcvar PBXItems_powerupfilter; resetcvar PBXItems_itemFilter"
-    SafeCommand "Reset Item Tool Tips", "resetcvar PBXItems_powerupHelpFlags; resetcvar PBXItems_itemHelpFlags"
-    SafeCommand "Reset PBX Items Durations", "resetcvar PBXItems_goldinv_duration; resetcvar PBXItems_terror_duration; resetcvar PBXItems_infammo_duration; resetcvar PBXItems_timefreeze_duration; resetcvar PBXItems_adrenaline_duration"
+    Option  "$PBXITEMS_MENU_ENABLE_TOOLTIPS", "PBXItems_SendTip", "OnOff","PBXCore_SendTip"
+    SafeCommand "$PBXITEMS_MENU_RESET_SPAWNERS", "resetcvar PBXItems_powerupfilter; resetcvar PBXItems_itemFilter"
+    SafeCommand "$PBXITEMS_MENU_RESET_PBXITEMS_TOOLTIPS", "resetcvar PBXItems_powerupHelpFlags; resetcvar PBXItems_itemHelpFlags"
+    SafeCommand "$PBXITEMS_MENU_RESET_DURATIONS", "resetcvar PBXItems_goldinv_duration; resetcvar PBXItems_terror_duration; resetcvar PBXItems_infammo_duration; resetcvar PBXItems_timefreeze_duration; resetcvar PBXItems_adrenaline_duration"
     StaticText "$PBXItems_Version",orange
     StaticText " "
 }
@@ -22,23 +22,25 @@ OptionMenu "PBXItesm_Menu"
     Position	-48
 
     StaticText	"--------- General Settings ---------", 1
-    Option "Start with the Equipment Launcher", "pbxitems_startwithshouldercannon", "OnOff","PBXCore_GlorykillLoaded",1,1
-    Option  "Enable Items Tooltips", "PBXItems_SendTip", "OnOff","PBXCore_SendTip"
-    SafeCommand "Enable All PBX Items  Spawners", "resetcvar PBXItems_powerupfilter; resetcvar PBXItems_itemFilter"
-    SafeCommand "Reset Item Tool Tips", "resetcvar PBXItems_powerupHelpFlags; resetcvar PBXItems_itemHelpFlags"
+    Option "$PBXITEMS_START_WITH_SHOULDERCANNON", "pbxitems_startwithshouldercannon", "OnOff","PBXCore_GlorykillLoaded",1,1
+    Option  "$PBXITEMS_MENU_ENABLE_TOOLTIPS", "PBXItems_SendTip", "OnOff","PBXCore_SendTip"
+    SafeCommand "$PBXITEMS_MENU_RESET_SPAWNERS", "resetcvar PBXItems_powerupfilter; resetcvar PBXItems_itemFilter"
+    SafeCommand "$PBXITEMS_MENU_RESET_PBXITEMS_TOOLTIPS", "resetcvar PBXItems_powerupHelpFlags; resetcvar PBXItems_itemHelpFlags"
+    StaticText " "
+    StaticText	"--------- PBX Items Settings ---------", 1
+    Option  "$PBXITEMS_SHOULDCANNON_USEAMMO",       "PBXItems_shouldercannonuseammo", "OnOff"
+    Slider "$PBXITEMS_FLAMEBELCHAMMOUSE",           "pbxitems_flamebelchammouse",     1, 500, 1
+    Slider "$PBXITEMS_ICEBOMBAMMOUSE",              "pbxitems_icebombammouse",        1, 500, 1
+    Slider "$PBXITEMS_JETPACKFUELUSE",              "pbxitems_jetpackfueluse",        1, 500, 1
     StaticText " "
     StaticText	"--------- PBX Items Duration Settings ---------", 1
-    Slider "Gold Invulnerability Sphere",             "pbxitems_goldinv_duration",        1, 500, 1
-    Slider "Terror Sphere",                    "pbxitems_terror_duration",         1, 500, 1
-    Slider "Infinite Ammo Sphere",             "pbxitems_infammo_duration",        1, 500, 1
-    Slider "Time Freeze Sphere",             "pbxitems_timefreeze_duration",     1, 500, 1
-    Slider "Adrenaline Sphere",             "pbxitems_adrenaline_duration",     1, 500, 1
-    SafeCommand "Reset PBX Items Durations", "resetcvar PBXItems_goldinv_duration; resetcvar PBXItems_terror_duration; resetcvar PBXItems_infammo_duration; resetcvar PBXItems_timefreeze_duration; resetcvar PBXItems_adrenaline_duration"
+    Slider "$PBXITEMS_GOLDINV_DURATION",             "pbxitems_goldinv_duration",        1, 500, 1
+    Slider "$PBXITEMS_TERROR_DURATION",              "pbxitems_terror_duration",         1, 500, 1
+    Slider "$PBXITEMS_INFAMMO_DURATION",             "pbxitems_infammo_duration",        1, 500, 1
+    Slider "$PBXITEMS_TIMEFREEZE_DURATION",          "pbxitems_timefreeze_duration",     1, 500, 1
+    Slider "$PBXITEMS_ADRENALINE_DURATION",          "pbxitems_adrenaline_duration",     1, 500, 1
+    SafeCommand "$PBXITEMS_MENU_RESET_DURATIONS", "resetcvar PBXItems_goldinv_duration; resetcvar PBXItems_terror_duration; resetcvar PBXItems_infammo_duration; resetcvar PBXItems_timefreeze_duration; resetcvar PBXItems_adrenaline_duration"
 
-
-    /* Command "Reset PBX Armor Tips", "set PBXWeapons_WeaponHelpFlags 0; set PBXWeapons_UpgradeHelpFlags 0" */
-
-    
     StaticText " "
     StaticText "$PBXItems_Version",orange
 }
@@ -47,78 +49,78 @@ OptionMenu "PBXItesm_Menu"
 // Tier 3
 AddOptionMenu "AddonHealthArmorSpawns" after "GRENT3"
 {
-    FlagOption    "Mini Sphere","PBXItems_powerupfilter",    "OffOn", 4
+    FlagOption  "$PBXITEMS_MINISPHERE","PBXItems_powerupfilter",    "OffOn", 4
 }
 
 //////////////////////////// BERSERK SPAWNER ////////////////////////////////////////////////////////////////////////////////////
 // TIER 1
 AddOptionMenu "AddonPowerupSpawns" after "ZERKT1"
 {
-    FlagOption    "Lifesteal Orb","PBXItems_powerupfilter",    "OffOn", 10
-    FlagOption    "Adrenaline","PBXItems_itemFilter",    "OffOn", 1
+    FlagOption    "$PBXITEMS_LIFESTEAL_ORB","PBXItems_powerupfilter",    "OffOn", 10
+    FlagOption    "$PBXITEMS_ADRENALINE","PBXItems_itemFilter",    "OffOn", 1
 }
 
 // TIER 2
 AddOptionMenu "AddonPowerupSpawns" after "ZERKT2"
 {
-    FlagOption    "Mega Berserk","PBXItems_powerupfilter",    "OffOn", 0
+    FlagOption    "$PBXITEMS_MEGABERSERK","PBXItems_powerupfilter",    "OffOn", 0
 }
 
 //////////////////////////// SOUL SPHERE SPAWNER ////////////////////////////////////////////////////////////////////////////////////
 // TIER 1
 AddOptionMenu "AddonHealthArmorSpawns" after "SOULT1"
 {
-    FlagOption    "Deflect Sphere","PBXItems_powerupfilter",    "OffOn", 6
-    FlagOption    "Terror Sphere","PBXItems_powerupfilter",    "OffOn", 11
-    FlagOption    "Ammo Sphere","PBXItems_powerupfilter",    "OffOn", 12
-    FlagOption    "Guard Sphere","PBXItems_powerupfilter",    "OffOn", 13
-    FlagOption    "Regen Sphere","PBXItems_powerupfilter",    "OffOn", 14
-    FlagOption    "Red Soul Sphere","PBXItems_powerupfilter",    "OffOn", 16
+    FlagOption    "$PBXITEMS_DEFLECT_SPHERE","PBXItems_powerupfilter",    "OffOn", 6
+    FlagOption    "$PBXITEMS_TERROR_SPHERE","PBXItems_powerupfilter",    "OffOn", 11
+    FlagOption    "$PBXITEMS_AMMO_SPHERE","PBXItems_powerupfilter",    "OffOn", 12
+    FlagOption    "$PBXITEMS_GUARD_SPHERE","PBXItems_powerupfilter",    "OffOn", 13
+    FlagOption    "$PBXITEMS_REGEN_SPHERE","PBXItems_powerupfilter",    "OffOn", 14
+    FlagOption    "$PBXITEMS_RED_SOULSPHERE","PBXItems_powerupfilter",    "OffOn", 16
 }
 
 // TIER 2
 AddOptionMenu "AddonHealthArmorSpawns" after "SOULT2"
 {
-    FlagOption    "Super Sphere","PBXItems_powerupfilter",    "OffOn", 1
-    FlagOption    "Electric Aura Sphere","PBXItems_powerupfilter",    "OffOn", 7
-    FlagOption    "Frost Aura Sphere","PBXItems_powerupfilter",    "OffOn", 20
-    FlagOption    "Fire Aura Sphere","PBXItems_powerupfilter",    "OffOn", 21
+    FlagOption    "$PBXITEMS_SUPERSPHERE","PBXItems_powerupfilter",    "OffOn", 1
+    FlagOption    "$PBXITEMS_ELECTRIC_AURA_SPHERE","PBXItems_powerupfilter",    "OffOn", 7
+    FlagOption    "$PBXITEMS_FROST_AURA_SPHERE","PBXItems_powerupfilter",    "OffOn", 20
+    FlagOption    "$PBXITEMS_FIRE_AURA_SPHERE","PBXItems_powerupfilter",    "OffOn", 21
 
 }
 
 // TIER 3
 AddOptionMenu "AddonHealthArmorSpawns" after "SOULT3"
 {
-    FlagOption    "Ultra Sphere","PBXItems_powerupfilter",    "OffOn", 2
-    FlagOption    "Flight Sphere","PBXItems_powerupfilter",    "OffOn", 22
+    FlagOption    "$PBXITEMS_ULTRA_SPHERE","PBXItems_powerupfilter",    "OffOn", 2
+    FlagOption    "$PBXITEMS_FLIGHT_SPHERE","PBXItems_powerupfilter",    "OffOn", 22
 }
 
 // TIER 4
 AddOptionMenu "AddonHealthArmorSpawns" after "SOULT4"
 {
-    FlagOption    "Time Sphere","PBXItems_powerupfilter",    "OffOn", 15
+    FlagOption    "$PBXITEMS_TIME_SPHERE","PBXItems_powerupfilter",    "OffOn", 15
 }
 
 //////////////////////////// MEGA SPHERE SPAWNER ////////////////////////////////////////////////////////////////////////////////////
 // TIER 1
 AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT1"
 {
-    FlagOption    "Dark Mega Sphere","PBXItems_powerupfilter",    "OffOn", 17
+    FlagOption    "$PBXITEMS_DARK_MEGASPHERE","PBXItems_powerupfilter",    "OffOn", 17
 }
 
 // TIER 2
 AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT2"
 {
-    FlagOption    "Hyper Sphere","PBXItems_powerupfilter",    "OffOn", 3
-    FlagOption    "Electric Aura Sphere","PBXItems_powerupfilter",    "OffOn", 7
-    FlagOption    "Frost Aura Sphere","PBXItems_powerupfilter",    "OffOn", 20
-    FlagOption    "Fire Aura Sphere","PBXItems_powerupfilter",    "OffOn", 21
+    FlagOption    "$PBXITEMS_HYPER_SPHERE","PBXItems_powerupfilter",    "OffOn", 3
+    FlagOption    "$PBXITEMS_ELECTRIC_AURA_SPHERE","PBXItems_powerupfilter",    "OffOn", 7
+    FlagOption    "$PBXITEMS_FROST_AURA_SPHERE","PBXItems_powerupfilter",    "OffOn", 20
+    FlagOption    "$PBXITEMS_FIRE_AURA_SPHERE","PBXItems_powerupfilter",    "OffOn", 21
 }
 
 // TIER 4
 AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT4"
 {
-    FlagOption    "Time Sphere","PBXItems_powerupfilter",    "OffOn", 15
+    FlagOption    "$PBXITEMS_TIME_SPHERE","PBXItems_powerupfilter",    "OffOn", 15
 }
 
 
@@ -126,54 +128,54 @@ AddOptionMenu "AddonHealthArmorSpawns" after "MEGAT4"
 // TIER 1
 AddOptionMenu "AddonPowerupSpawns" after "INVLT1"
 {
-    FlagOption    "Gold Invulnerability Sphere","PBXItems_powerupfilter",    "OffOn", 8
+    FlagOption    "$PBXITEMS_GOLDINV_SPHERE","PBXItems_powerupfilter",    "OffOn", 8
 }
 
 // TIER 2
 AddOptionMenu "AddonPowerupSpawns" after "INVLT2"
 {
-    FlagOption    "Legend Sphere","PBXItems_powerupfilter",    "OffOn", 9
+    FlagOption    "$PBXITEMS_LEGEND_SPHERE","PBXItems_powerupfilter",    "OffOn", 9
 }
 
 // TIER 4
 AddOptionMenu "AddonPowerupSpawns" after "INVLT3"
 {
-    FlagOption    "Time Sphere","PBXItems_powerupfilter",    "OffOn", 15
+    FlagOption    "$PBXITEMS_TIME_SPHERE","PBXItems_powerupfilter",    "OffOn", 15
 }
 
 //////////////////////////// INVIS SPAWNER ////////////////////////////////////////////////////////////////////////////////////
 // TIER 1
 AddOptionMenu "AddonPowerupSpawns" after "INVST1"
 {
-    FlagOption    "Black Blur","PBXItems_powerupfilter",    "OffOn", 5
-    FlagOption    "Haste","PBXItems_powerupfilter",    "OffOn", 19
+    FlagOption    "$PBXITEMS_BLACK_BLUR","PBXItems_powerupfilter",    "OffOn", 5
+    FlagOption    "$PBXITEMS_HASTE","PBXItems_powerupfilter",    "OffOn", 19
 }
 
 AddOptionMenu "AddonPowerupSpawns" after "INVST3"
 {
-    FlagOption    "Quad Damage","PBXItems_powerupfilter",    "OffOn", 20
+    FlagOption    "$PBXITEMS_QUAD_DAMAGE","PBXItems_powerupfilter",    "OffOn", 20
 }
 
 
 //////////////////////////// MEDIKIT SPAWNER ////////////////////////////////////////////////////////////////////////////////////
 AddOptionMenu "AddonHealthArmorSpawns" after "MEDIT4"
 {
-    FlagOption    "Regen Sphere","PBXItems_powerupfilter",    "OffOn", 14
+    FlagOption    "$PBXITEMS_REGEN_SPHERE","PBXItems_powerupfilter",    "OffOn", 14
 }
 
 //////////////////////////// BACKPACK SPAWNER ////////////////////////////////////////////////////////////////////////////////////
 AddOptionMenu "AddonAmmoSpawns" after "PACKT1"
 {
-    FlagOption    "Repair Kit","PBXItems_itemFilter",    "OffOn", 0
+    FlagOption    "$PBXITEMS_REPAIR_KIT","PBXItems_itemFilter",    "OffOn", 0
 }
 
 AddOptionMenu "AddonAmmoSpawns" after "PACKT2"
 {
-    FlagOption    "Shoulder Cannon","PBXItems_itemFilter",    "OffOn", 2
+    FlagOption    "$PBXITEMS_SHOULDERCANNON","PBXItems_itemFilter",    "OffOn", 2
 }
 
 //////////////////////////// AMMO SPAWNER ////////////////////////////////////////////////////////////////////////////////////
 AddOptionMenu "AddonAmmoSpawns" after "BROKT2"
 {
-    FlagOption  "Jet Pack","PBXItems_itemFilter",    "OffOn", 3
+    FlagOption  "$PBXITEMS_JET_PACK","PBXItems_itemFilter",    "OffOn", 3
 }

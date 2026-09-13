@@ -91,7 +91,7 @@ class PBX_RepairKit : PB_Inventory
 	private
     void RepairKit_SpawnAmmo(string at1, string at2, int a1, int a2, int xoff)
 	{
-        self.A_SpawnItemEx("TeleportationFog",xoff);
+        // self.A_SpawnItemEx("TeleportationFog",xoff);
         for(int i = a1;i>0;i--)
             self.A_SpawnItemEx(at1,xoff,0,32,frandom(0,2),frandom(-2,2),frandom(3,8),frandom(-30,30));
         for(int i = a2;i>0;i--)
@@ -295,38 +295,37 @@ class PBX_ShoulderCannon : CustomInventory
 		int slot = invoker.pendingSlot;
 		invoker.pendingSlot = EQUIP_NONE;
 
-		bool useELAmmo = true;
-		let useAmmo = CVAR.GetCvar("be_UseELammo");
-		if(useAmmo)
-			useELAmmo = useAmmo.GetBool();
+		bool useELAmmo = PBXItems_shouldercannonuseammo;
+		int mFlameBelchAmmoUse = PBXItems_FlameBelchAmmoUse;
+		int mIceBombAmmoUse = PBXItems_IceBombAmmoUse;
 
 		if (slot == EQUIP_FLAMEBELCH)
 		{
-			bool notEnoughAmmo = CountInv(FUEL_AMMO) < FLAME_AMMO_TAKE;
+			bool notEnoughAmmo = CountInv(FUEL_AMMO) < mFlameBelchAmmoUse;
 			if ((useELAmmo && notEnoughAmmo) || !invoker.isReady[EQUIP_FLAMEBELCH])
 			{
 				A_Print(notEnoughAmmo ? "$SHOULDCANNON_NOFUEL" : "$SHOULDCAN_FLAMNOTREADY");
-				emptyCannon();
+				A_StartSound("Equip_notready",CHAN_AUTO,CHANF_OVERLAP);
 				return ResolveState("CheckForAction");
 			}
 
 			invoker.isReady[EQUIP_FLAMEBELCH] = false;
-			if (useELAmmo) TakeInventory(FUEL_AMMO, FLAME_AMMO_TAKE);
+			if (useELAmmo) TakeInventory(FUEL_AMMO, mFlameBelchAmmoUse);
 			A_Overlay(FLAMEBELCH_LAYER, "FireFlameBelch");
 			return ResolveState("CheckForAction");
 		}
 		if (slot == EQUIP_ICEBOMB)
 		{
-			bool notEnoughAmmo = CountInv(ROCKET_AMMO) < ICE_AMMO_TAKE;
+			bool notEnoughAmmo = CountInv(ROCKET_AMMO) < mIceBombAmmoUse;
 			if ((useELAmmo && notEnoughAmmo) || !invoker.isReady[EQUIP_ICEBOMB])
 			{
 				A_Print(notEnoughAmmo ? "$SHOULDCANNON_NOROCKET" : "$SHOULDCAN_ICENOTREADY");
-				emptyCannon();
+				A_StartSound("Equip_notready",CHAN_AUTO,CHANF_OVERLAP);
 				return ResolveState("CheckForAction");
 			}
 
 			invoker.isReady[EQUIP_ICEBOMB] = false;
-			if (useELAmmo) TakeInventory(ROCKET_AMMO, ICE_AMMO_TAKE);
+			if (useELAmmo) TakeInventory(ROCKET_AMMO, mIceBombAmmoUse);
 			A_Overlay(ICEBOMB_LAYER, "FireIceBomb");
 			A_OverlayFlags(ICEBOMB_LAYER, PSPF_FLIP|PSPF_MIRROR, true); // flip the layer so its on the right side
 			return ResolveState("CheckForAction");
@@ -334,13 +333,6 @@ class PBX_ShoulderCannon : CustomInventory
 		return ResolveState(null);
 	}
 
-	private 
-	action void emptyCannon()
-	{
-		A_StartSound("Equip_notready");
-	}
-
-	// Used by UI scope
 	clearscope int GetEquipCooldown(int slot) const
 	{
 		if (slot < 0 || slot >= EQUIP_COUNT) return 0;
@@ -435,6 +427,14 @@ class PBX_Jetpack : Inventory
 		+INVENTORY.UNTOSSABLE
 	}
 
+	int mJetpackFuelTake;
+
+	override void PostBeginPlay()
+	{
+		Super.PostBeginPlay();
+		mJetpackFuelTake = PBXItems_JetPackFuelUse;
+	}
+
 	//This function is executed every tic by items while they're in an actor's inventory:
 	Override void DoEffect() 
 	{
@@ -448,8 +448,8 @@ class PBX_Jetpack : Inventory
 		if (level.time % TICRATE != 0)  
 			return;
 
-		if(owner.CountInv("PB_Fuel") > JETPACK_FUEL_TAKE-1)
-			owner.A_TakeInventory("PB_Fuel",JETPACK_FUEL_TAKE);
+		if(owner.CountInv("PB_Fuel") > mJetpackFuelTake-1)
+			owner.A_TakeInventory("PB_Fuel",mJetpackFuelTake);
 		else
 		{
 			owner.A_Print("$JETPACK_NOFUEL");
@@ -466,18 +466,17 @@ class PBX_Jetpack : Inventory
 			if(PBXItems_SendTip)
 			{
 				Array<String> tips;
-				tips.Push(string.format(StringTable.Localize("$PBX_JetPack_Tip1"),JETPACK_FUEL_TAKE));
-				tips.Push(string.format(StringTable.Localize("$PBX_JetPack_Tip2"),PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_togglejetpack")));
+				tips.Push(string.format(StringTable.Localize("$PBX_JetPack_Tip1"),PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_togglejetpack")));
 				PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_itemHelpFlags",PBXItems_Tip_JetPack);
 			}
-			toucher.A_GiveInventory("PB_Fuel",JETPACK_FUEL_TAKE*15); // So you atleast have 15 seconds of flight
+			toucher.A_GiveInventory("PB_Fuel",mJetpackFuelTake*15); // So you atleast have 15 seconds of flight
         }
         return pickup;
     }
 
 	void toggleJetpack(bool bypassCheck = false)
 	{
-		if(owner.CountInv("PB_Fuel") < JETPACK_FUEL_TAKE && !bypassCheck)
+		if(owner.CountInv("PB_Fuel") < mJetpackFuelTake && !bypassCheck)
 		{
 			owner.A_Print("$SHOULDCANNON_NOFUEL");
 			owner.A_startsound("weapons/carbine/respectbeep",4);

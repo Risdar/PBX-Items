@@ -1,9 +1,9 @@
-addkeysection "Shoulder Cannon" PBX_KEY
+addkeysection "$PBXITEMS_KEYS_SHOULDERCANNON" PBX_KEY
 Alias          pbx_doflame	                    "netevent PBX_UseFlameBelch"
 Alias          pbx_doice	                    "netevent PBX_UseIceBomb"
-AddMenuKey     "Shoulder Cannon: Flame Belch" 	pbx_doflame
-AddMenuKey     "Shoulder Cannon: Ice Bomb" 	    pbx_doice
+AddMenuKey     "$PBXITEMS_KEYS_FLAMEBELCH" 	pbx_doflame
+AddMenuKey     "$PBXITEMS_KEYS_ICEBOMB" 	    pbx_doice
 
 addkeysection "Jet Pack" PBX_KEY
 Alias         pbx_togglejetpack	            "netevent PBX_ToggleJetpack"
-AddMenuKey    "Toggle Jetpack" 	            pbx_togglejetpack
+AddMenuKey    "$PBXITEMS_KEYS_JETPACK" 	            pbx_togglejetpack

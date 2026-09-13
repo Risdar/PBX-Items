@@ -10,19 +10,6 @@ class PBX_MegaBerserk : PB_Berserk
 		Tag "$MEGABERSERK_TAG";
 	}
 
-	Override Void PostBeginPlay()
-    {
-		string invString = "PB_Berserk";
-		class<actor> invActor = invString;
-		if(invActor){
-			let def = GetDefaultByType(invActor);
-			if (!def){Destroy();return;}
-			self.scale.x = def.scale.x;
-			self.scale.y = def.scale.y;
-		}
-		Super.PostBeginPlay();
-	}
-
 	override bool Use(bool pickup)
 	{
         if(!PB_HelpNotificationsHandler.CheckTipEvent(1 << 6, CVar.GetCvar("pb_helpflags", owner.Player)))
@@ -39,9 +26,11 @@ class PBX_MegaBerserk : PB_Berserk
 		return true;
 	}
 
-    override string PickupMessage()
+	override string PickupMessage() 
 	{
-		return string.format(ownrhp < 25 ? "Mega Berserk Pack (+%u much needed HP)" : "Mega Berserk Pack (+%u HP)",max(0,MEGABERSERK_HP - ownrhp));
+		string msg = StringTable.Localize("$MEGABERSERK_PICKUP");
+		if(ownHP < 25) msg = StringTable.Localize("$MEGABERSERK_PICKUP_LOW");
+		return string.format(msg, max(0, 100 - ownHP));
 	}
 
 	States
@@ -58,23 +47,21 @@ class PBX_SuperSphere : PB_Soulsphere
 	Default
 	{
 		Inventory.AltHudIcon "SPRSA0";
+		Inventory.Amount SUPERSPHERE_HP;
+		Inventory.MaxAmount SUPERSPHERE_MAX;
+		Inventory.PickupMessage "$SUPERSPHERE_PICKUP";
+		Health.LowMessage 25, "$SUPERSPHERE_PICKUP_LOW";
 		Tag "$SUPERSPHERE_TAG";
 	}
 
-
-	override bool Use(bool pickup)
+	override bool TryPickup (in out Actor other) 
 	{
-		owner.A_SetBlend("Blue",0.75,16);
-		owner.GiveBody(SUPERSPHERE_HP,SUPERSPHERE_MAX);
-		if(pb_newmugshot) owner.A_SetMugshotState("SoulsphereGrin");
-		return true;
+		other.A_SetBlend("Blue",0.75,16);
+		if(other.player && CVar.GetCVar("pb_newmugshot", other.player).GetBool())
+			other.A_SetMugshotState("SoulsphereGrin");
+		return super.TryPickup(other);
 	}
 	
-    override string PickupMessage()
-	{
-		return string.format(String.Format(ownrhp < 25 ? "SuperSphere (+%u much needed HP)" : "SuperSphere (+%u HP)",clamp(min(SUPERSPHERE_HP, SUPERSPHERE_MAX - ownrhp), 0, SUPERSPHERE_HP)));
-	}
-
 	States
 	{
 		Spawn:
@@ -84,8 +71,8 @@ class PBX_SuperSphere : PB_Soulsphere
 }
 
 // --- Ultra Sphere ---
-class PBX_UltraSphere : PB_Megasphere
-{
+class PBX_UltraSphere : PB_Inventory
+{	
 	Default
 	{
 		Inventory.AltHudIcon "ULTSA0";
@@ -93,13 +80,23 @@ class PBX_UltraSphere : PB_Megasphere
 		Tag "$ULTRASPHERE_TAG";
 	}
 
+	int ownHP, ownAP;
+
 	override bool Use(bool pickup)
 	{
 		owner.A_SetBlend("White",0.75,16);
-		owner.A_GiveInventory(GetReplacement("PBX_SuperArmor").getClassName());
+		ownHP = clamp(200 - owner.health, 0, 200);
+		ownAP = clamp(200 - owner.CountInv("BasicArmor"), 0, 200);
 		owner.A_GiveInventory(GetReplacement("PB_Soulsphere").getClassName());
+		owner.A_GiveInventory("PBX_UltraArmor");
 		if(pb_newmugshot) owner.A_SetMugshotState("MegasphereGrin");
 		return true;
+	}
+	
+	override string PickupMessage()
+	{
+		string msg = string.format(StringTable.Localize(Super.PickupMessage()), ownHP, ownAP);
+		return msg;
 	}
 	
 	States
@@ -109,20 +106,20 @@ class PBX_UltraSphere : PB_Megasphere
 			loop;
 	}
 }
-class PBX_SuperArmor : PBXCore_ArmorBase
+class PBX_UltraArmor : PBXCore_ArmorBase
 {
 	Default
     {
-		Armor.SavePercent SUPERARMOR_SV;
-		Armor.SaveAmount SUPERARMOR_AMT;
-		Inventory.PickupMessage "$SUPERARMOR_PICKUP";
+		Armor.SavePercent ULTRAARMOR_SV;
+		Armor.SaveAmount ULTRAARMOR_AMT;
+		Inventory.PickupMessage "$ULTRAARMOR_PICKUP";
         Inventory.AltHudIcon "ULTSA0";
-		Tag "$SUPERARMOR_TAG";
+		Tag "$ULTRAARMOR_TAG";
 	}
 }
 
 // --- Hyper Sphere ---
-class PBX_HyperSphere : PB_Megasphere
+class PBX_HyperSphere : PB_Inventory
 {
 	Default
 	{
@@ -131,13 +128,23 @@ class PBX_HyperSphere : PB_Megasphere
 		Tag "$HYPERSPHERE_TAG";
 	}
 
+	int ownHP, ownAP;
+
 	override bool Use(bool pickup)
 	{
 		owner.A_SetBlend("White",0.75,16);
-		owner.A_GiveInventory(GetReplacement("PBX_HyperArmor").getClassName());
+		ownHP = clamp(200 - owner.health, 0, 200);
+		ownAP = clamp(200 - owner.CountInv("BasicArmor"), 0, 200);
 		owner.GiveBody(HYPERSPHERE_HP,HYPERSPHERE_MAX);
+		owner.A_GiveInventory("PBX_HyperArmor");
 		if(pb_newmugshot) owner.A_SetMugshotState("MegasphereGrin");
 		return true;
+	}
+	
+	override string PickupMessage()
+	{
+		string msg = string.format(StringTable.Localize(Super.PickupMessage()), ownHP, ownAP);
+		return msg;
 	}
 	
 	States
@@ -160,7 +167,7 @@ class PBX_HyperArmor : PBXCore_ArmorBase
 }
 
 // --- Mini Sphere ---
-class PBX_MiniSphere : PB_Megasphere
+class PBX_MiniSphere : PB_Inventory
 {
 	Default
 	{
@@ -170,13 +177,23 @@ class PBX_MiniSphere : PB_Megasphere
 		Tag "$MINISPHERE_TAG";
 	}
 
+	int ownHP, ownAP;
+
 	override bool Use(bool pickup)
 	{
 		owner.A_SetBlend("White",0.75,16);
-		owner.A_GiveInventory(GetReplacement("PBX_MiniArmor").getClassName());
+		ownHP = clamp(200 - owner.health, 0, 200);
+		ownAP = clamp(200 - owner.CountInv("BasicArmor"), 0, 200);
 		owner.GiveBody(MINISPHERE_HP,MINISPHERE_MAX);
+		owner.A_GiveInventory("PBX_MiniArmor");
 		if(pb_newmugshot) owner.A_SetMugshotState("MegasphereGrin");
 		return true;
+	}
+	
+	override string PickupMessage()
+	{
+		string msg = string.format(StringTable.Localize(Super.PickupMessage()), ownHP, ownAP);
+		return msg;
 	}
 	
 	States
@@ -214,19 +231,11 @@ Class PBX_BlackBlur : PB_Inventory
 		Inventory.PickupSound "INVISIBL";
 		+FLOATBOB
 		floatbobstrength .4;
-		Tag "$MINIARMOR_TAG";
+		Tag "$BLACKBLUR_TAG";
 	}
 	
     override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
-		{
-			Array<String> tips;
-			tips.Push("$PBX_BlackBlur_Tip1");
-			tips.Push("$PBX_BlackBlur_Tip2");
-			tips.Push("$PBX_BlackBlur_Tip3");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_BlackBlur);
-		}
 		owner.A_SetBlend("DarkSlateBlue",0.75,16);
 		owner.A_GiveInventory("PBX_InvisTaintedGiver");
 		return true;
@@ -239,11 +248,17 @@ Class PBX_BlackBlur : PB_Inventory
 		{
 			let obj = it.thing;
 						
-			if(obj && obj is "PB_Monster" && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) <= 256 && !obj.bSTEALTH)
+			if(obj && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) <= 256 && !obj.bSTEALTH)
 			{
 				obj.bSTEALTH = TRUE;
+				if(PBXItems_SendTip)
+				{
+					Array<String> tips;
+					tips.Push("$PBX_BlackBlur_Tip1");
+					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_BlackBlur);
+				}
 			}
-			else if(obj && obj is "PB_Monster" && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) > 256 && obj.bSTEALTH)
+			else if(obj && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) > 256 && obj.bSTEALTH)
 			{
 				obj.bSTEALTH = FALSE;
 				obj.Alpha = 1.0;
@@ -255,8 +270,8 @@ Class PBX_BlackBlur : PB_Inventory
 	{
 		super.Tick();
 		
-		double a = FRandom(1, 360);
-		double b = (FRandom(-40, 40) + FRandom(-40, 40));
+		double a = frandom[sfx](1, 360);
+		double b = (frandom[sfx](-40, 40) + frandom[sfx](-40, 40));
 		
 		A_SpawnParticleEx(
 			"0000AA",
@@ -288,7 +303,7 @@ Class PBX_BlackBlur : PB_Inventory
 			{
 				let obj = it.thing;
 						
-				if(obj && obj is "PB_Monster" && obj.bISMONSTER && obj.bSTEALTH)
+				if(obj && obj.bISMONSTER && obj.bSTEALTH)
 				{
 					obj.bSTEALTH = FALSE;
 					obj.Alpha = 1.0;
@@ -400,13 +415,10 @@ class PBX_GoldInvul : PB_Inventory
 		{
 			Array<String> tips;
 			tips.Push("$PBX_GoldInvul_Tip1");
-			tips.Push("$PBX_GoldInvul_Tip2");
-			tips.Push("$PBX_GoldInvul_Tip3");
 			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_GoldInvul);
 		}
 		owner.A_SetBlend("PaleGoldenrod",0.75,16);
 		owner.A_GiveInventory("PBXItems_InvulTaintedGiver");
-		owner.A_GiveInventory("PBX_DeflectGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("Grin");
 		return true;
 	}
@@ -418,11 +430,11 @@ class PBX_GoldInvul : PB_Inventory
 		{
 			let obj = it.thing;
 						
-			if(obj && obj is "PB_Monster" && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) <= 256 && !obj.bINVULNERABLE)
+			if(obj && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) <= 256 && !obj.bINVULNERABLE)
 			{
 				obj.bINVULNERABLE = TRUE;
 			}
-			else if(obj && obj is "PB_Monster" && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) > 256 && obj.bINVULNERABLE)
+			else if(obj && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) > 256 && obj.bINVULNERABLE)
 			{
 				obj.bINVULNERABLE = FALSE;
 			}
@@ -438,7 +450,7 @@ class PBX_GoldInvul : PB_Inventory
 			{
 				let obj = it.thing;
 						
-				if(obj && obj is "PB_Monster" && obj.bISMONSTER && obj.bINVULNERABLE)
+				if(obj && obj.bISMONSTER && obj.bINVULNERABLE)
 				{
 					obj.bINVULNERABLE = FALSE;
 				}
@@ -456,7 +468,7 @@ class PBX_GoldInvul : PB_Inventory
 			n = 0;
 			
 		double a = n;
-		double b = (FRandom(-20, 20) + FRandom(-20, 20));
+		double b = (frandom[sfx](-20, 20) + frandom[sfx](-20, 20));
 	
 		A_SpawnParticleEx(
 			"00AA00",
@@ -482,7 +494,7 @@ class PBX_GoldInvul : PB_Inventory
 		while(it.Next())
 		{
 			let obj = it.thing;
-			if(obj && obj is "PB_Monster" && obj.bISMONSTER && Distance3D(obj) <= 256 && !obj.bCORPSE)
+			if(obj && obj.bISMONSTER && Distance3D(obj) <= 256 && !obj.bCORPSE)
 			{
 				obj.A_SpawnParticleEx(
                     "00AA00",
@@ -492,8 +504,8 @@ class PBX_GoldInvul : PB_Inventory
                     lifetime: 105,
                     size: 3.0,
                     angle: n,
-                    xoff: cos(a) * cos(FRandom(-obj.radius, obj.radius) + FRandom(-obj.radius, obj.radius)) * obj.radius,
-                    yoff: sin(a) * cos(FRandom(-obj.radius, obj.radius) + FRandom(-obj.radius, obj.radius)) * obj.radius,
+                    xoff: cos(a) * cos(frandom[sfx](-obj.radius, obj.radius) + frandom[sfx](-obj.radius, obj.radius)) * obj.radius,
+                    yoff: sin(a) * cos(frandom[sfx](-obj.radius, obj.radius) + frandom[sfx](-obj.radius, obj.radius)) * obj.radius,
                     zoff: obj.height / 2,
                     startalphaf: 1.0,
                     fadestepf: -0.03,
@@ -576,12 +588,6 @@ class PBX_LifestealOrb : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
-		{
-			Array<String> tips;
-			tips.Push("$PBX_Lifesteal_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_LifestealOrb);
-		}
 		owner.A_SetBlend("firebrick",0.75,16);
 		owner.A_GiveInventory("PBX_DrainGiver");
 		return true;
@@ -779,12 +785,6 @@ class PBX_RegenSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
-		{
-			Array<String> tips;
-			tips.Push("$PBX_Regen_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_RegenSphere);
-		}
 		owner.A_SetBlend("Cyan",0.75,16);
 		owner.A_GiveInventory("PBX_RegenerationGiver");
 		return true;
@@ -844,22 +844,22 @@ class PBX_RedSoulSphere : PB_Inventory
 		Tag "$REDSOUL_TAG";
 	}
 
-	int damageTimer;
-    int corpseTimer;
+	int damageTimer, corpseTimer;
+	int ownHP;
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
-		{
-			Array<String> tips;
-			tips.Push("$PBX_RedSoul_Tip1");
-			tips.Push("$PBX_RedSoul_Tip2");
-			tips.Push("$PBX_RedSoul_Tip3");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_RedSoul);
-		}
 		owner.A_SetBlend("Red",0.75,16);
+		ownHP = clamp(200 - owner.health, 0, 200);
 		owner.GiveBody(REDSOUL_HP,REDSOUL_MAX);
+		if(pb_newmugshot) owner.A_SetMugshotState("SoulsphereGrin");
 		return true;
+	}
+	
+	override string PickupMessage()
+	{
+		string msg = string.format(StringTable.Localize(Super.PickupMessage()), ownHP);
+		return msg;
 	}
 
     override void Tick()
@@ -898,8 +898,8 @@ class PBX_RedSoulSphere : PB_Inventory
             lifetime: 15,
             size: 2.0,
             angle: 0,
-            xoff: FRandom(-3, 3),
-            yoff: FRandom(-3, 3),
+            xoff: frandom[sfx](-3, 3),
+            yoff: frandom[sfx](-3, 3),
             zoff: 15,
             velz: -0.01,
             accelz: -0.4,
@@ -917,7 +917,16 @@ class PBX_RedSoulSphere : PB_Inventory
         {
             let obj = it.thing;
             if(obj.player && obj.health > 0 && Distance3D(obj) <= 256)
+			{
+				if(PBXItems_SendTip)
+				{
+					Array<String> tips;
+					tips.Push("$PBX_RedSoul_Tip1");
+					tips.Push("$PBX_RedSoul_Tip2");
+					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_RedSoul);
+				}
                 obj.DamageMobj(self, self, 1, "");
+			}
         }
     }
 
@@ -950,8 +959,7 @@ class PBX_RedSoulSphere : PB_Inventory
 			loop;
 	}
 }
-Class CorpseDrained : Inventory
-{Default{Inventory.MaxAmount 1;+INVENTORY.UNDROPPABLE;}}
+Class CorpseDrained : Inventory {Default{Inventory.MaxAmount 1;+INVENTORY.UNDROPPABLE;}}
 
 // --- Dark Megasphere ---
 class PBX_DarkMegaSphere : PB_Inventory
@@ -967,31 +975,33 @@ class PBX_DarkMegaSphere : PB_Inventory
 		Tag "$DARKMEGA_TAG";
 	}
 
+	int ownHP, ownAP;
+
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
-		{
-			Array<String> tips;
-			tips.Push("$PBX_DarkMega_Tip1");
-			tips.Push("$PBX_DarkMega_Tip2");
-			tips.Push("$PBX_DarkMega_Tip3");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_DarkMega);
-		}
 		owner.A_SetBlend("DarkOrange",0.75,16);
+		ownHP = clamp(200 - owner.health, 0, 200);
+		ownAP = clamp(200 - owner.CountInv("BasicArmor"), 0, 200);
 		owner.GiveBody(DARKMEGA_HP,DARKMEGA_MAX);
-		owner.A_GiveInventory("PBX_SuperArmor");
+		owner.A_GiveInventory("PBX_UltraArmor");
 		owner.A_GiveInventory("PBX_TaintedRegenGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("MegasphereGrin");
 		return true;
+	}
+	
+	override string PickupMessage()
+	{
+		string msg = string.format(StringTable.Localize(Super.PickupMessage()), ownHP, ownAP);
+		return msg;
 	}
 
     override void Tick()
 	{
 		super.Tick();
 		
-		double a = FRandom(1, 360);
-		double b = (FRandom(-20, 20) + FRandom(-20, 20));
-		
+		double a = frandom[sfx](1, 360);
+		double b = (frandom[sfx](-20, 20) + frandom[sfx](-20, 20));
+
 		A_SpawnParticleEx(
 			"BB0055",
 			TexMan.CheckForTexture ("STARA0"),
@@ -1017,7 +1027,7 @@ class PBX_DarkMegaSphere : PB_Inventory
 		while(it.Next())
 		{
 			let obj = it.thing;
-			if(obj && obj is "PB_Monster" && obj.bISMONSTER && Distance3D(obj) <= 256 && !obj.bCORPSE && obj.health < obj.SpawnHealth())
+			if(obj && obj.bISMONSTER && Distance3D(obj) <= 256 && !obj.bCORPSE && obj.health < obj.SpawnHealth())
 			{
 				obj.A_SpawnParticleEx(
 					"BB0055",
@@ -1027,12 +1037,12 @@ class PBX_DarkMegaSphere : PB_Inventory
 					lifetime: 50,
 					size: 0.5,
 					angle: 0,
-					xoff: FRandom (obj.radius,-obj.radius),
-					yoff: FRandom (obj.radius,-obj.radius),
+					xoff: frandom[sfx](obj.radius,-obj.radius),
+					yoff: frandom[sfx](obj.radius,-obj.radius),
 					zoff: 0,
-					velx: FRandom (0.5,-0.5),
-					vely: FRandom (0.5,-0.5),
-					velz: FRandom (0.4,3.0),
+					velx: frandom[sfx](0.5,-0.5),
+					vely: frandom[sfx](0.5,-0.5),
+					velz: frandom[sfx](0.4,3.0),
 					accelz: -0.001,
 					startalphaf: 1.25,
 					fadestepf: -0.002,
@@ -1042,6 +1052,12 @@ class PBX_DarkMegaSphere : PB_Inventory
 					rollacc: 0
 				);
 				obj.health++;
+				if(PBXItems_SendTip)
+				{
+					Array<String> tips;
+					tips.Push("$PBX_DarkMega_Tip1");
+					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_DarkMega);
+				}
 			}
 		}
 	}

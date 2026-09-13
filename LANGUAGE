@@ -6,15 +6,21 @@ PBXitems_Version        = "\ciPBX - Items Version: 1.5";
 //////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
 // Pickup Messages
 // Powerups
-ULTRASPHERE_PICKUP      = "UltraSphere (100 HP/AP)";
-HYPERSPHERE_PICKUP      = "HyperSphere (300 HP/AP)";
-MINISPHERE_PICKUP       = "MiniSphere (50 HP/AP)";
+MEGABERSERK_PICKUP_LOW  = "Mega Berserk Pack (+%u much needed HP)";
+MEGABERSERK_PICKUP      = "Mega Berserk Pack (+%u HP)";
 
-SUPERARMOR_PICKUP       = "Picked up the Super Armor";
+ULTRASPHERE_PICKUP      = "UltraSphere (+%d HP/+%d AP)";
+HYPERSPHERE_PICKUP      = "HyperSphere (+%d HP/+%d AP)";
+MINISPHERE_PICKUP       = "MiniSphere (+%d HP/+%d AP)";
+
+SUPERSPHERE_PICKUP      = "SuperSphere (+%d HP)";
+SUPERSPHERE_PICKUP_LOW  = "SuperSphere (+%d much needed HP)";
+
+ULTRAARMOR_PICKUP       = "Picked up the Ultra Armor";
 HYPERARMOR_PICKUP       = "Picked up the Hyper Armor";
 MINIARMOR_PICKUP        = "Picked up the Compact Armor";
 
-BLACKBLUR_PICKUP        = "Black Blur (Tainted Invisibility)";
+BLACKBLUR_PICKUP        = "Black Blur";
 DEFLECTSPHERE_PICKUP    = "Deflection Sphere";
 ELECTAURA_PICKUP        = "Electric Aura";
 GOLDINV_PICKUP          = "Gold Invulnerability (Tainted Invulnerability)";
@@ -26,8 +32,8 @@ GUARDSPHERE_PICKUP      = "Guard Sphere";
 REGENSPHERE_PICKUP      = "Regen Sphere";
 TIMEFREEZE_PICKUP       = "ZA WARUDO";
 
-REDSOUL_PICKUP          = "Red SoulSphere (Tainted SoulSphere)";
-DARKMEGA_PICKUP         = "Dark MegaSphere (Tainted MegaSphere)";
+REDSOUL_PICKUP          = "Red SoulSphere (+%d HP)";
+DARKMEGA_PICKUP         = "Dark MegaSphere (+%d HP/+%d AP)";
 
 FROSTAURA_PICKUP        = "Frost Aura";
 FIREAURA_PICKUP         = "Fire Aura";
@@ -59,11 +65,11 @@ ULTRASPHERE_TAG         = "UltraSphere";
 HYPERSPHERE_TAG         = "HyperSphere";
 MINISPHERE_TAG          = "MiniSphere";
 
-SUPERARMOR_TAG          = "Super Armor";
+ULTRAARMOR_TAG          = "Ultra Armor";
 HYPERARMOR_TAG          = "Hyper Armor";
 MINIARMOR_TAG           = "Compact Armor";
 
-BLACKBLUR_TAG           = "Black Blur";
+BLACKBLUR_TAG           = "Tainted BlurSphere";
 GOLDINV_TAG             = "Gold Invulnerability";
 TIMEFREEZE_TAG          = "Time Freeze";
 
@@ -76,54 +82,40 @@ SHOULDCANNON_TAG        = "Shoulder Cannon";
 
 
 //////////////////////////// POWERUPS TIPS ///////////////////////////////////////////////////////////////////////////////
-PBX_BlackBlur_Tip1 = "The Black Blur is a Tainted Invisibility sphere.";
-PBX_BlackBlur_Tip2 = "It has a longer duration and you can't get hit by seekers";
-PBX_BlackBlur_Tip3 = "But the sphere will give stealth to every monster that comes near it.";
+PBX_BlackBlur_Tip1 = "The Black Blur has a longer duration but will give \custealth\c- to every monster nearby.";
 
-PBX_Deflect_Tip1 = "The Deflect Sphere will change the direction of every projectile that comes near the player.";
+PBX_Deflect_Tip1 = "The Deflect Sphere will change the direction of every projectile that comes near.";
 
-PBX_ElectAura_Tip1 = "The Electric Aura Sphere will summon a domain of electricity that damages and stuns everything inside.";
+PBX_ElectAura_Tip1 = "The Electric Aura Sphere summons a field that \cnstuns\c- enemies.";
 
-PBX_GoldInvul_Tip1 = "The Gold Invulnerability is Tainted Invulnerability sphere.";
-PBX_GoldInvul_Tip2 = "It has a longer duration and deflects projectiles.";
-PBX_GoldInvul_Tip3 = "But the sphere will make every monster near it invulnerable.";
+PBX_GoldInvul_Tip1 = "The Gold Invulnerability has a longer duration but will make every monster nearby \cfinvulnerable\c-.";
 
-PBX_Legend_Tip1 = "The Legend Sphere will make you not go below 1 HP.";
-
-PBX_Lifesteal_Tip1 = "The Lifesteal Orb will heal half of the damage you dealt.";
+PBX_Legend_Tip1 = "The Legend Sphere will prevent you from going below 1 HP.";
 
 PBX_Terror_Tip1 = "The Terror Sphere will make every monster run away from you.";
 
-PBX_Ammo_Tip1 = "The Ammo Sphere will give you infinite ammo.";
+PBX_Ammo_Tip1 = "The Ammo Sphere gives infinite ammo.";
 
-PBX_Guard_Tip1 = "The Guard Sphere will give you 75 Percent damage reduction.";
+PBX_Guard_Tip1 = "The Guard Sphere gives 75 Percent damage reduction.";
 
-PBX_Regen_Tip1 = "The Regen Sphere will give you health regeneration.";
+PBX_RedSoul_Tip1 = "The Red SoulSphere gives more HP but will \cgdamage the player\c- if they get close.";
+PBX_RedSoul_Tip2 = "It will also spawn \cglost souls\c- for every corpse nearby.";
 
-PBX_RedSoul_Tip1 = "The Red Soul Sphere is a Tainted Soul Sphere.";
-PBX_RedSoul_Tip2 = "It gives 150 HP but the sphere will damage the player if they gets close.";
-PBX_RedSoul_Tip2 = "It will also spawn lost souls for every corpse nearby.";
+PBX_DarkMega_Tip1 = "The Dark MegaSphere gives regen on top of the normal MegaSphere but it will \cgheal\c- every monster nearby.";
 
-PBX_DarkMega_Tip1 = "The Dark Mega Sphere is a Tainted Mega Sphere.";
-PBX_DarkMega_Tip2 = "On top of the normal 200 HP and AP it will also give HP Regen.";
-PBX_DarkMega_Tip3 = "But the sphere will heal every monster nearby.";
+PBX_Adrenaline_Tip1 = "The Adrenaline gives \ctQuad Damage\c- and \ckHaste\c-.";
 
-PBX_Adrenaline_Tip1 = "The Adrenaline will give you Quad Damage and Haste.";
+PBX_FrostAura_Tip1 = "The Frost Aura Sphere summons a field that \cvfreeze\c- enemies.";
 
-PBX_FrostAura_Tip1 = "The Frost Aura Sphere will summon a domain that damages and slowly freeze everything inside.";
-PBX_FireAura_Tip1 = "The Fire Aura Sphere will slowly burn every enemies near the player.";
+PBX_FireAura_Tip1 = "The Fire Aura Sphere summons a field that \cxburn\c- enemies.";
 
 //////////////////////////// ITEMS TIPS ///////////////////////////////////////////////////////////////////////////////
-PBX_ElectAura_Tip1 = "The Electric Aura Sphere will summon a domain of electricity that damages and stuns everything inside.";
+PBX_Repairkit_Tip1 = "The Weapon Repair Kit spawns ammo for the current weapon.";
+PBX_Repairkit_Tip2 = "It will also repair all of the \crMonster Weapons.";
 
-PBX_Repairkit_Tip1 = "The Weapon Repair Kit will spawn ammo for the currently selected weapon.";
-PBX_Repairkit_Tip2 = "It will also repair the all of the Monster Weapons.";
+PBX_ShouldCan_Tip1 = "You can use the the \cgflame belch\c- by using %s and the \cyice bomb\c- by using %s.";
 
-PBX_ShouldCan_Tip1 = "The Shoulder Cannon lets you fire a flame belch or an ice bomb using fuel or rockets respectively.";
-PBX_ShouldCan_Tip2 = "You can use the the flame belch by using %s and the ice bomb by using %s.";
-
-PBX_JetPack_Tip1 = "The Jetpack requires fuel to be activated, when active it will take %d fuel every second.";
-PBX_JetPack_Tip2 = "You can activate the JetPack by pressing %s.";
+PBX_JetPack_Tip1 = "You can activate the JetPack by pressing %s, while active it will consume %d fuel every second.";
 
 //////////////////////////// MENU TIPS ///////////////////////////////////////////////////////////////////////////////
 TIP_pbxitems_startwithshouldercannon = "If enabled, the player will start with the Shoulder Cannon equipped. (Automatically disabled if GloryKill is loaded)";

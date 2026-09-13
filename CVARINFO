@@ -1,6 +1,7 @@
 // General
 server bool PBXItems_SendTip = true;
-server bool pbxitems_startwithshouldercannon = false;
+server bool PBXItems_startwithshouldercannon = false;
+server bool PBXItems_shouldercannonuseammo = true;
 
 // Spawners
 server int PBXItems_powerupfilter = 0;
@@ -8,15 +9,18 @@ server int PBXItems_itemFilter = 0;
 server int PBXItems_powerupHelpFlags = 0;
 server int PBXItems_itemHelpFlags = 0;
 
-// Itmes
+// Items
+server int PBXItems_FlameBelchAmmoUse = 20;
+server int PBXItems_IceBombAmmoUse = 1;
+server int PBXItems_JetPackFuelUse = 5;
 
 // Durations
-server int pbxitems_goldinv_duration      = 60;
-server int pbxitems_terror_duration       = 45;
-server int pbxitems_infammo_duration      = 30;
-server int pbxitems_timefreeze_duration   = 45;
+server int PBXItems_goldinv_duration      = 90;
+server int PBXItems_terror_duration       = 45;
+server int PBXItems_infammo_duration      = 30;
+server int PBXItems_timefreeze_duration   = 45;
 
-server int pbxitems_adrenaline_duration   = 15;
+server int PBXItems_adrenaline_duration   = 15;
 
 
 

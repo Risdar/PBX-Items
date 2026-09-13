@@ -5,17 +5,15 @@ enum PBXItems_ePowerupTipFlags
 	PBXItems_Tip_ElectricAura           = 1 << 2,
 	PBXItems_Tip_GoldInvul              = 1 << 3,
 	PBXItems_Tip_LegendSPhere           = 1 << 4,
-	PBXItems_Tip_LifestealOrb           = 1 << 5,
 	PBXItems_Tip_TerrorSphere           = 1 << 6,
 	PBXItems_Tip_AmmoSphere             = 1 << 7,
 	PBXItems_Tip_GuardSphere            = 1 << 8,
-	PBXItems_Tip_RegenSphere            = 1 << 9,
 
-	PBXItems_Tip_RedSoul                = 1 << 10,
-	PBXItems_Tip_DarkMega               = 1 << 11,
+	PBXItems_Tip_RedSoul                = 1 << 9,
+	PBXItems_Tip_DarkMega               = 1 << 10,
 
-	PBXItems_Tip_FrostAura              = 1 << 12,
-	PBXItems_Tip_FireAura               = 1 << 13
+	PBXItems_Tip_FrostAura              = 1 << 11,
+	PBXItems_Tip_FireAura               = 1 << 12
 }
 
 enum PBXItems_eItemTipFlags
@@ -34,14 +32,13 @@ enum PBXItems_Values
     SUPERSPHERE_HP      = 100,
     SUPERSPHERE_MAX     = 200,
 
-    //Given by Ultra Sphere
-    SUPERARMOR_SV       = 70,
-    SUPERARMOR_AMT      = 100,
+    ULTRAARMOR_SV       = 70,
+    ULTRAARMOR_AMT      = 100,
 
-    HYPERSPHERE_HP      = 300,
-    HYPERSPHERE_MAX     = 300,
-    HYPERARMOR_SV       = 70,
-    HYPERARMOR_AMT      = 300,
+    HYPERSPHERE_HP      = 200,
+    HYPERSPHERE_MAX     = 200,
+    HYPERARMOR_SV       = 100,
+    HYPERARMOR_AMT      = 200,
 
     MINISPHERE_HP       = 50,
     MINISPHERE_MAX      = 200,
@@ -55,13 +52,10 @@ enum PBXItems_Values
     DARKMEGA_MAX   		= 200,
 
     AURASPHERE_HP   	= 100,
-    AURASPHERE_MAX   	= 200,
+    AURASPHERE_MAX   	= 200
 
 	// Items
-	FLAME_AMMO_TAKE		= 20,
-	ICE_AMMO_TAKE		= 1,
 
-	JETPACK_FUEL_TAKE	= 5 	//This amount is taken every second the jetpack is active
 }
 
 mixin class PBXItems_Duration
@@ -69,8 +63,7 @@ mixin class PBXItems_Duration
     override void BeginPlay()
 	{
 		super.BeginPlay();
-		name cvr = getDuration(self);
-		EffectTics = cvr != '' ? PBXCore_Duration.GetByCVar(cvr) : 0;
+		EffectTics = CVar.FindCVar(getDuration(self)).GetInt() * TICRATE;
 	}
 
     name getDuration(actor mActor)
