@@ -65,6 +65,8 @@ PBXITEMS_SHOULDERCANNON = "Enable Shoulder Cannon";
 
 PBXITEMS_JET_PACK = "Enable Jet Pack";
 
+PBXITEMS_UPGRADEBOT = "Enable Upgrade Bot";
+
 //////////////////////////// KEYS MENU ///////////////////////////////////////////////////////////////////////////////
 PBXITEMS_KEYS_SHOULDERCANNON = "Shoulder Cannon";
 PBXITEMS_KEYS_FLAMEBELCH = "Shoulder Cannon: Flame Belch";

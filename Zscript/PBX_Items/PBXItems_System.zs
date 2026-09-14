@@ -21,7 +21,8 @@ enum PBXItems_eItemTipFlags
 	PBXItems_Tip_RepairKit			    = 1 << 0,
 	PBXItems_Tip_Adrenaline             = 1 << 1,
 	PBXItems_Tip_ShoulderCannon         = 1 << 2,
-	PBXItems_Tip_JetPack         		= 1 << 3
+	PBXItems_Tip_JetPack         		= 1 << 3,
+	PBXItems_Tip_UpgradeBot         	= 1 << 4
 }
 
 enum PBXItems_Values

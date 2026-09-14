@@ -1,4 +1,6 @@
 Gameinfo
 {
 	addeventhandlers = "PBXItems_Handler"
+	addeventhandlers = "PBXItems_UpgradeBotHandler"
+	addeventhandlers = "PBXItems_UpgradeBotDisplay"
 }

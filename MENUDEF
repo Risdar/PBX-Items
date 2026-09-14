@@ -163,7 +163,7 @@ AddOptionMenu "AddonHealthArmorSpawns" after "MEDIT4"
     FlagOption    "$PBXITEMS_REGEN_SPHERE","PBXItems_powerupfilter",    "OffOn", 14
 }
 
-//////////////////////////// BACKPACK SPAWNER ////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////// BACKPACK/UPGRADE SPAWNER ////////////////////////////////////////////////////////////////////////////////////
 AddOptionMenu "AddonAmmoSpawns" after "PACKT1"
 {
     FlagOption    "$PBXITEMS_REPAIR_KIT","PBXItems_itemFilter",    "OffOn", 0
@@ -172,6 +172,7 @@ AddOptionMenu "AddonAmmoSpawns" after "PACKT1"
 AddOptionMenu "AddonAmmoSpawns" after "PACKT2"
 {
     FlagOption    "$PBXITEMS_SHOULDERCANNON","PBXItems_itemFilter",    "OffOn", 2
+    FlagOption    "$PBXITEMS_UPGRADEBOT","PBXItems_itemFilter",    "OffOn", 4
 }
 
 //////////////////////////// AMMO SPAWNER ////////////////////////////////////////////////////////////////////////////////////
