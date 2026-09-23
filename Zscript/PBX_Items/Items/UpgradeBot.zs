@@ -192,7 +192,6 @@ class UpgradeBotAnimation : PB_WeaponBase
 			TNT1 A 0 {
 				A_WeaponOffset(0,32);
 				PB_SetRoll(0);
-				A_SetInventory("PB_LockScreenTilt",0);
 				A_ZoomFactor(1.0);
 			}
 			TNT1 A 0 SetPlayerProperty(0,1,4);
